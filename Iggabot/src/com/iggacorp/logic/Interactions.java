@@ -1,9 +1,9 @@
 package com.iggacorp.logic;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -15,12 +15,25 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 public class Interactions extends ListenerAdapter {
 
 
+	AI ai = iggAI();
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
-				Commands.slash("echo", "Repeats messages back to you."),
 				Commands.slash("cheer", "cheers for the user")
-				.addOption(OptionType.USER, "user", "3 Cheers for the user!")
+				.addOption(OptionType.USER, "user", "3 Cheers for the user!",true),
+				Commands.slash("sex", "Sex eachother")
+				.addOption(OptionType.USER, "user", "Sex's the user", true),
+				Commands.slash("chat", "Lets Iggabot start chatting")
+				.addOption(OptionType.BOOLEAN, "boolean", "Sets chatting state",true)
+
 				).queue();
+	}
+
+	private AI iggAI() {
+		AI i = null;
+		try {
+			i = new AI(Main.PATH + "/Logs/Training/IggChats.txt","llama3");
+		} catch (Exception e) {e.printStackTrace();}
+		return i;
 	}
 
 	@Override
@@ -29,41 +42,22 @@ public class Interactions extends ListenerAdapter {
 		default->{
 			event.reply("If you somehow did this, contact delta with the exact command you did").setEphemeral(true).queue();
 		}
-		case "echo" ->{
-			event.reply("Fuck you").queue();
-		}
 		case "cheer" ->{
 			event.reply("3 cheers for " + event.getOption("user").getAsMember().getUser().getEffectiveName() + "\nHip Hip Hooray!\nHip Hip Hooray!\nHip Hip Hooray!").queue();
 		}
-		/*case "" ->{b=false;
+		case "sex" ->{
+			event.reply("Not implemented yet! Yell at butter to get the images!!!").setEphemeral(true).queue();
+		}
+		case "" ->{
 
 		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}
-		case "" ->{b=false;
-
-		}*/
 		}
 	}
+	public static boolean CHAT_ENABLED = false;
 	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
+		if(event.getAuthor().isBot()) {return;}
 		if(exclude(event)) {
 			try {
 				ServerLogs.write(event.getAuthor().getEffectiveName() + ": " + event.getMessage().getContentDisplay() + "\n");
@@ -73,6 +67,24 @@ public class Interactions extends ListenerAdapter {
 				e.printStackTrace();
 			}
 		}
+		if(event.getMessage().getContentRaw().startsWith("i!")&&isAdmin(event)) {
+			String str = event.getMessage().getContentRaw().substring(2);
+			if(str.contains("chat")) {
+				if(str.substring(5).toLowerCase().contains("true")) {
+					CHAT_ENABLED = true;
+					event.getChannel().sendMessage("Iggabot chatting enabled!").queue();
+				} else {
+					CHAT_ENABLED = false;
+					event.getChannel().sendMessage("Iggabot chatting disabled!").queue();
+				}
+			}
+		}
+		if(CHAT_ENABLED&&event.getChannel().getId().equals("1211473025514475617")) {
+			event.getChannel().sendMessage(ai.chat(event.getMessage().getContentDisplay())).queue();
+		}
+	}
+	private boolean isAdmin(MessageReceivedEvent event) {
+		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}
 	private BufferedWriter create(String string) {
 		BufferedWriter i = null;
@@ -84,7 +96,6 @@ public class Interactions extends ListenerAdapter {
 		}
 		return i;
 	}
-
 	private boolean exclude(MessageReceivedEvent event) {
 		boolean b = true;
 		switch(event.getChannel().getId()) {

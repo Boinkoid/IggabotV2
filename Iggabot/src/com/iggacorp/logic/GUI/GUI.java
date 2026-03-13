@@ -24,7 +24,19 @@ public class GUI {
 		new Main();
 		gui = new GUI();
 		loadLogs();
+		//makeIggFiles();
 	}
+
+	/*private static void makeIggFiles() throws Exception {
+		BufferedReader r = new BufferedReader(new FileReader(new File(PATH + "/Logs/Training/The Iggacorp Files.txt")));
+		BufferedWriter w = new BufferedWriter(new FileWriter(new File(PATH + "/Logs/Training/IggChats.txt")));
+		for(String e : r.readAllLines()) {
+			if(e.split(":")[0].equals("1411486569386213376")&&e.split(":").length>1&&!e.contains("@")) {
+				w.write(e.split(":")[1] + "\n");
+			}
+		}
+		w.flush();
+	}*/
 
 	//Makes frame
 	public GUI() throws Exception {
