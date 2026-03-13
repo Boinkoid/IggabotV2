@@ -83,12 +83,12 @@ public class Interactions extends ListenerAdapter {
 		}
 		if(CHAT_ENABLED&&event.getChannel().getId().equals("1481875943038652416")) {
 			String str = ai.chat(event.getMessage().getContentDisplay());
+			event.getChannel().sendMessage(str).queue();
 			if(str.toLowerCase().contains(" nigga ")||str.toLowerCase().contains(" niggabot ")||str.toLowerCase().contains(" niggagi ")) {
 				count(new BigInteger("1"));
 			} else if(str.toLowerCase().contains(" nigger ")) {
 				count(new BigInteger("3"));
 			}
-			event.getChannel().sendMessage(str).queue();
 		}
 	}
 	private void count(BigInteger i) {
