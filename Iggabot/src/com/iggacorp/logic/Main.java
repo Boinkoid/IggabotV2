@@ -13,17 +13,12 @@ import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.internal.utils.JDALogger;
 
 
-public class Main implements Runnable {
+public class Main {
 
 	public static final Path PATH = Path.of("C:/NONWINDOWS/Iggabot/");
 	public static JDA bot;
 	public Guild guild;
 	
-	//Bot thread
-	@Override
-	public void run() {
-		
-	}
 
 	//Random bullshit GO!!
 	public Main() throws Exception {
@@ -32,7 +27,6 @@ public class Main implements Runnable {
 		bot.addEventListener(new Interactions(bot));
 		bot.awaitReady();
 		guild = bot.getGuildById("1460789003933454482");
-		new Thread(this).start();
 	}
 	//Makes the bot
 	@SuppressWarnings("resource")

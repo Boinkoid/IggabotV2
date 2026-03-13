@@ -1,9 +1,13 @@
 package com.iggacorp.logic;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -21,9 +25,7 @@ public class Interactions extends ListenerAdapter {
 				Commands.slash("cheer", "cheers for the user")
 				.addOption(OptionType.USER, "user", "3 Cheers for the user!",true),
 				Commands.slash("sex", "Sex eachother")
-				.addOption(OptionType.USER, "user", "Sex's the user", true),
-				Commands.slash("chat", "Lets Iggabot start chatting")
-				.addOption(OptionType.BOOLEAN, "boolean", "Sets chatting state",true)
+				.addOption(OptionType.USER, "user", "Sex's the user", true)
 
 				).queue();
 	}
@@ -79,10 +81,30 @@ public class Interactions extends ListenerAdapter {
 				}
 			}
 		}
-		if(CHAT_ENABLED&&event.getChannel().getId().equals("1211473025514475617")) {
-			event.getChannel().sendMessage(ai.chat(event.getMessage().getContentDisplay())).queue();
+		if(CHAT_ENABLED&&event.getChannel().getId().equals("1481875943038652416")) {
+			String str = ai.chat(event.getMessage().getContentDisplay());
+			if(str.toLowerCase().contains(" nigga ")||str.toLowerCase().contains(" niggabot ")||str.toLowerCase().contains(" niggagi ")) {
+				count(new BigInteger("1"));
+			} else if(str.toLowerCase().contains(" nigger ")) {
+				count(new BigInteger("3"));
+			}
+			event.getChannel().sendMessage(str).queue();
 		}
 	}
+	private void count(BigInteger i) {
+		try {
+			BufferedReader r = new BufferedReader(new FileReader(Main.PATH + "/Logs/Output/Count.txt"));
+			BufferedWriter w = new BufferedWriter(new FileWriter(Main.PATH + "/Logs/Output/Count.txt"));
+			
+			BigInteger j = new BigInteger(r.readLine());
+			j = j.add(i);
+			w.write(j.toString());
+			w.flush();
+			w.close();
+			r.close();
+		} catch (Exception e) {e.printStackTrace();}
+	}
+
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}

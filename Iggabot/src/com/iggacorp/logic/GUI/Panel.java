@@ -19,12 +19,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
+import com.iggacorp.logic.Interactions;
+import com.iggacorp.logic.Main;
+
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
+
 
 @SuppressWarnings("serial")
 public class Panel extends JPanel {
 
 	public static JTextArea txt;
-	private static final String[][] buttonNames = {{"Add Cmd","Not implemented yet","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"}};
+	private static final String[][] buttonNames = {{"Add Cmd","Chat","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"}};
 	public Panel() {
 		super();
 		JPanel panel1 = new JPanel();
@@ -46,6 +51,14 @@ public class Panel extends JPanel {
 					switch(e.getActionCommand()) {
 					case "Add Cmd" ->{
 						createPopup();
+					}
+					case "Chat" ->{
+						Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
+						if(Interactions.CHAT_ENABLED) {
+							Main.bot.getChannelById(TextChannel.class,"1481875943038652416").sendMessage("Iggabot chatting enabled!").queue();
+						} else {
+							Main.bot.getChannelById(TextChannel.class,"1481875943038652416").sendMessage("Iggabot chatting disabled!").queue();
+						}
 					}
 					case "Not implemented yet" ->{
 						System.out.println("You're stupid if you clicked this");
@@ -129,6 +142,7 @@ public class Panel extends JPanel {
 				popup.optionsPanel.remove(row);
 				popup.optionsPanel.revalidate();
 				popup.optionsPanel.repaint();
+				popup.optionRows.remove(popup.optionRows.size());
 			});
 
 			popup.optionsPanel.add(row);

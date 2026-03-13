@@ -1,4 +1,5 @@
 package com.iggacorp.logic;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.net.URI;
@@ -6,11 +7,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class AI {
 
     private final HttpClient client;
     private final String styleExamples;
     private final String model;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     public AI(String filePath, String model) throws Exception {
 
@@ -35,10 +40,13 @@ public class AI {
 
     private void startOllama() {
         try {
+
             ProcessBuilder pb = new ProcessBuilder("ollama", "serve");
             pb.redirectErrorStream(true);
             pb.start();
+
             Thread.sleep(3000);
+
         } catch (Exception e) {
             System.out.println("Ollama may already be running.");
         }
@@ -50,6 +58,8 @@ public class AI {
 
             String prompt = """
 You are texting exactly like this person.
+Your name is Iggagi.
+You cannot swear, including in abbreviations like wth and lmao.
 
 Examples of how they text:
 %s
@@ -59,16 +69,18 @@ Reply the way they would.
 User: %s
 """.formatted(styleExamples, userMessage);
 
+            String safePrompt = prompt
+                    .replace("\\", "\\\\")
+                    .replace("\"", "\\\"")
+                    .replace("\n", "\\n");
+
             String json = """
 {
   "model": "%s",
   "prompt": "%s",
   "stream": false
 }
-""".formatted(
-                    model,
-                    prompt.replace("\"", "\\\"").replace("\n", "\\n")
-            );
+""".formatted(model, safePrompt);
 
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://localhost:11434/api/generate"))
@@ -79,14 +91,9 @@ User: %s
             HttpResponse<String> response =
                     client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            String body = response.body();
+            JsonNode node = mapper.readTree(response.body());
 
-            int start = body.indexOf("\"response\":\"") + 12;
-            int end = body.indexOf("\"", start);
-
-            return body.substring(start, end)
-                    .replace("\\n", "\n")
-                    .replace("\\\"", "\"");
+            return node.get("response").asText();
 
         } catch (Exception e) {
             return "AI Error: " + e.getMessage();
