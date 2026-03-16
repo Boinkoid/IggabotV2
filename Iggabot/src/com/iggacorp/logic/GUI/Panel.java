@@ -55,9 +55,9 @@ public class Panel extends JPanel {
 					case "Chat" ->{
 						Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
 						if(Interactions.CHAT_ENABLED) {
-							Main.bot.getChannelById(TextChannel.class,"1481875943038652416").sendMessage("Iggabot chatting enabled!").queue();
+							Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting enabled!").queue();
 						} else {
-							Main.bot.getChannelById(TextChannel.class,"1481875943038652416").sendMessage("Iggabot chatting disabled!").queue();
+							Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting disabled!").queue();
 						}
 					}
 					case "Not implemented yet" ->{

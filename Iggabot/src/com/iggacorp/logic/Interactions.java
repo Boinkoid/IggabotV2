@@ -53,7 +53,7 @@ public class Interactions extends ListenerAdapter {
 		}
 	}
 	public static boolean CHAT_ENABLED = false;
-	BufferedWriter ServerLogs = create("D:/Iggacorp/Iggabot/Logs/ServerLogs.txt");
+	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		if(event.getAuthor().isBot()) {return;}
@@ -78,12 +78,12 @@ public class Interactions extends ListenerAdapter {
 			}
 		}
 		//Chatting
-		if(CHAT_ENABLED&&event.getChannel().getId().equals("1481875943038652416")) {
+		if(CHAT_ENABLED&&event.getChannel().getId().equals(Main.IGGABOT_CHANNEL)) {
 			String str = ai.chat(event.getMessage().getContentDisplay());
 			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("niggabot")||str.toLowerCase().contains("niggagi")||str.toLowerCase().contains("nigger")) {
 				str = "Bot said the N Word, this is bad and is currently being removed.";
 			}
-			event.getChannel().sendMessage(str);
+			event.getChannel().sendMessage(str).queue();
 		}
 	}
 
