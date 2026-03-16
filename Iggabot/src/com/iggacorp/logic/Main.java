@@ -3,6 +3,8 @@ package com.iggacorp.logic;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.EnumSet;
 
@@ -29,9 +31,15 @@ public class Main {
 		guild = bot.getGuildById("1460789003933454482");
 	}
 	//Makes the bot
-	@SuppressWarnings("resource")
 	private static JDA setupBot() throws Exception {
-		return JDABuilder.createDefault(new BufferedReader(new FileReader(new File(PATH + "/Logs/Static/Key.txt"))).readLine(), EnumSet.allOf(GatewayIntent.class)).build();
+		return JDABuilder.createDefault(Files.readString(Path.of(PATH + "/Logs/Static/Key.txt")), EnumSet.allOf(GatewayIntent.class)).build();
+	}
+	public static String getNWordCount() {
+		String i = "0";
+		try {
+			i = Files.readString(Path.of(PATH + "/Logs/Output/Count.txt"));
+		} catch (IOException e) {e.printStackTrace();}
+		return i;
 	}
 
 }

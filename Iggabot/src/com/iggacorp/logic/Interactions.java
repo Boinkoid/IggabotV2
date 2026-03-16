@@ -23,9 +23,9 @@ public class Interactions extends ListenerAdapter {
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
 				Commands.slash("cheer", "cheers for the user")
-				.addOption(OptionType.USER, "user", "3 Cheers for the user!",true),
+					.addOption(OptionType.USER, "user", "3 Cheers for the user!",true),
 				Commands.slash("sex", "Sex eachother")
-				.addOption(OptionType.USER, "user", "Sex's the user", true)
+					.addOption(OptionType.USER, "user", "Sex's the user", true)
 
 				).queue();
 	}
@@ -50,25 +50,21 @@ public class Interactions extends ListenerAdapter {
 		case "sex" ->{
 			event.reply("Not implemented yet! Yell at butter to get the images!!!").setEphemeral(true).queue();
 		}
-		case "" ->{
-
-		}
 		}
 	}
 	public static boolean CHAT_ENABLED = false;
-	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
+	BufferedWriter ServerLogs = create("D:/Iggacorp/Iggabot/Logs/ServerLogs.txt");
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		if(event.getAuthor().isBot()) {return;}
+		//Logs
 		if(exclude(event)) {
 			try {
 				ServerLogs.write(event.getAuthor().getEffectiveName() + ": " + event.getMessage().getContentDisplay() + "\n");
 				ServerLogs.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} catch (IOException e) {e.printStackTrace();}
 		}
+		//Admin Commands
 		if(event.getMessage().getContentRaw().startsWith("i!")&&isAdmin(event)) {
 			String str = event.getMessage().getContentRaw().substring(2);
 			if(str.contains("chat")) {
@@ -81,28 +77,14 @@ public class Interactions extends ListenerAdapter {
 				}
 			}
 		}
+		//Chatting
 		if(CHAT_ENABLED&&event.getChannel().getId().equals("1481875943038652416")) {
 			String str = ai.chat(event.getMessage().getContentDisplay());
-			event.getChannel().sendMessage(str).queue();
-			if(str.toLowerCase().contains(" nigga ")||str.toLowerCase().contains(" niggabot ")||str.toLowerCase().contains(" niggagi ")) {
-				count(new BigInteger("1"));
-			} else if(str.toLowerCase().contains(" nigger ")) {
-				count(new BigInteger("3"));
+			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("niggabot")||str.toLowerCase().contains("niggagi")||str.toLowerCase().contains("nigger")) {
+				str = "Bot said the N Word, this is bad and is currently being removed.";
 			}
+			event.getChannel().sendMessage(str);
 		}
-	}
-	private void count(BigInteger i) {
-		try {
-			BufferedReader r = new BufferedReader(new FileReader(Main.PATH + "/Logs/Output/Count.txt"));
-			BufferedWriter w = new BufferedWriter(new FileWriter(Main.PATH + "/Logs/Output/Count.txt"));
-			
-			BigInteger j = new BigInteger(r.readLine());
-			j = j.add(i);
-			w.write(j.toString());
-			w.flush();
-			w.close();
-			r.close();
-		} catch (Exception e) {e.printStackTrace();}
 	}
 
 	private boolean isAdmin(MessageReceivedEvent event) {

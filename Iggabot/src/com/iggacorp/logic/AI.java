@@ -12,91 +12,91 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AI {
 
-    private final HttpClient client;
-    private final String styleExamples;
-    private final String model;
-    private final ObjectMapper mapper = new ObjectMapper();
+	private final HttpClient client;
+	private final String styleExamples;
+	private final String model;
+	private final ObjectMapper mapper = new ObjectMapper();
 
-    public AI(String filePath, String model) throws Exception {
+	public AI(String filePath, String model) throws Exception {
 
-        startOllama();
+		startOllama();
 
-        this.client = HttpClient.newHttpClient();
-        this.model = model;
+		this.client = HttpClient.newHttpClient();
+		this.model = model;
 
-        StringBuilder builder = new StringBuilder();
+		StringBuilder builder = new StringBuilder();
 
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        String line;
+		BufferedReader reader = new BufferedReader(new FileReader(filePath));
+		String line;
 
-        while ((line = reader.readLine()) != null) {
-            builder.append(line).append("\n");
-        }
+		while ((line = reader.readLine()) != null) {
+			builder.append(line).append("\n");
+		}
 
-        reader.close();
+		reader.close();
 
-        styleExamples = builder.toString();
-    }
+		styleExamples = builder.toString();
+	}
 
-    private void startOllama() {
-        try {
+	private void startOllama() {
+		try {
 
-            ProcessBuilder pb = new ProcessBuilder("ollama", "serve");
-            pb.redirectErrorStream(true);
-            pb.start();
+			ProcessBuilder pb = new ProcessBuilder("ollama", "serve");
+			pb.start();
 
-            Thread.sleep(3000);
+			Thread.sleep(3000);
 
-        } catch (Exception e) {
-            System.out.println("Ollama may already be running.");
-        }
-    }
+		} catch (Exception e) {
+			System.out.println("Ollama may already be running.");
+		}
+	}
 
-    public String chat(String userMessage) {
+	public String chat(String userMessage) {
 
-        try {
+		try {
 
-            String prompt = """
-You are texting exactly like this person.
-Your name is Iggagi.
-You cannot swear, including in abbreviations like wth and lmao.
+			String prompt = """
+					You are texting exactly like this person.
+					Your name is Iggagi.
+					You cannot swear, including in abbreviations like wth and lmao.
 
-Examples of how they text:
-%s
+					Examples of how they text:
+					%s
 
-Reply the way they would.
+					Reply the way they would.
 
-User: %s
-""".formatted(styleExamples, userMessage);
+					User: %s
+					""".formatted(styleExamples, userMessage);
 
-            String safePrompt = prompt
-                    .replace("\\", "\\\\")
-                    .replace("\"", "\\\"")
-                    .replace("\n", "\\n");
+			String safePrompt = prompt
+					.replace("\\", "\\\\")
+					.replace("\"", "\\\"")
+					.replace("\n", "\\n");
 
-            String json = """
-{
-  "model": "%s",
-  "prompt": "%s",
-  "stream": false
-}
-""".formatted(model, safePrompt);
+			String json = """
+					{
+					"model": "%s",
+					"prompt": "%s",
+					"stream": false
+					}
+					""".formatted(model, safePrompt);
 
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://localhost:11434/api/generate"))
-                    .header("Content-Type", "application/json")
-                    .POST(HttpRequest.BodyPublishers.ofString(json))
-                    .build();
+			HttpRequest request = HttpRequest.newBuilder()
+					.uri(URI.create("http://localhost:11434/api/generate"))
+					.header("Content-Type", "application/json")
+					.POST(HttpRequest.BodyPublishers.ofString(json))
+					.build();
 
-            HttpResponse<String> response =
-                    client.send(request, HttpResponse.BodyHandlers.ofString());
+			HttpResponse<String> response =
+					client.send(request, HttpResponse.BodyHandlers.ofString());
 
-            JsonNode node = mapper.readTree(response.body());
+			JsonNode node = mapper.readTree(response.body());
 
-            return node.get("response").asText();
+			return node.get("response").asText();
 
-        } catch (Exception e) {
-            return "AI Error: " + e.getMessage();
-        }
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "Error, contact delta asap";
+		}
+	}
 }

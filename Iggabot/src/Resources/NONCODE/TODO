@@ -1,0 +1,10 @@
+TODO
+
+
+
+MAKE IGGABOT INSTALLER{
+make an exe installer that just pulls the git repo
+make it get the user dir as the default, but let it be changeable, like when extracting a zip file
+make it so the path is saved as that
+
+}
