@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -25,7 +28,9 @@ public class Interactions extends ListenerAdapter {
 				Commands.slash("cheer", "cheers for the user")
 					.addOption(OptionType.USER, "user", "3 Cheers for the user!",true),
 				Commands.slash("sex", "Sex eachother")
-					.addOption(OptionType.USER, "user", "Sex's the user", true)
+					.addOption(OptionType.USER, "user", "Sex's the user", true),
+				Commands.slash("idea", "Give me your ideas")
+					.addOption(OptionType.STRING, "idea", "Please give me your ideas, im desperate T-T", true)
 
 				).queue();
 	}
@@ -49,6 +54,15 @@ public class Interactions extends ListenerAdapter {
 		}
 		case "sex" ->{
 			event.reply("Not implemented yet! Yell at butter to get the images!!!").setEphemeral(true).queue();
+		}
+		case "idea" ->{
+			event.reply("Thank you for the idea! I'll get back to you about adding it").setEphemeral(true).queue();
+			String str = "";
+			str = event.getMember().getUser().getGlobalName() + ": " + event.getOption("idea").getAsString();
+			try(BufferedWriter w = new BufferedWriter(new FileWriter(Main.PATH + "/Logs/Output/Ideas.txt",true))){
+				w.append(str + "\n");
+				w.flush();
+			} catch(Exception e) {e.printStackTrace();}
 		}
 		}
 	}

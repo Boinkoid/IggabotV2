@@ -41,8 +41,9 @@ public class GUI {
 	}*/
 
 	//Makes frame
+	public static JFrame frame;
 	public GUI() throws Exception {
-		JFrame frame = new JFrame("Iggabot"); 
+		frame = new JFrame("Iggabot"); 
 		frame.setIconImage(ImageIO.read(new File(PATH + "/Images/Teto.jpg")));
 		frame.setSize(800,600);
 		frame.setLocationRelativeTo(null);

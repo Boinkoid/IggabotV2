@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +32,24 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 public class Panel extends JPanel {
 
 	public static JTextArea txt;
-	private static final String[][] buttonNames = {{"Add Cmd","Chat","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"},{"Not implemented yet","Not implemented yet","Not implemented yet"}};
+	public static JPanel buttonPanel;
+	public static ArrayList<JButton[][]> BUTTON_LIST = new ArrayList<>();
+	private static final String[][] BUTTON_PAGE_1 = {
+			{"Add Cmd","Chat","Ideas"},
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Not implemented yet","Not implemented yet","Next page"}};
+	private static final String[][] BUTTON_PAGE_2 = {
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Previous page","Not implemented yet","Next page"}};
+	private static final String[][] BUTTON_PAGE_3 = {
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Previous page","Not implemented yet","Not implemented yet"}};
+	private static final String[][][] BUTTON_PAGES = {BUTTON_PAGE_1,BUTTON_PAGE_2,BUTTON_PAGE_3};
 	public Panel() {
 		super();
+		makeButtons();
 		JPanel panel1 = new JPanel();
 		setLayout(new BorderLayout());
 		txt = new JTextArea();
@@ -42,33 +60,69 @@ public class Panel extends JPanel {
 		panel1.setMinimumSize(new Dimension(400,600));
 		panel1.setBackground(Color.green);
 		add(panel1,BorderLayout.EAST);
-		JPanel panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(3,3));
-		for(int i = 0; i<3; i++) {
-			for(int j = 0; j<3; j++) {
-				JButton b = new JButton(buttonNames[i][j]);
-				b.addActionListener(e->{
-					switch(e.getActionCommand()) {
-					case "Add Cmd" ->{
-						createPopup();
-					}
-					case "Chat" ->{
-						Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
-						if(Interactions.CHAT_ENABLED) {
-							Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting enabled!").queue();
-						} else {
-							Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting disabled!").queue();
-						}
-					}
-					case "Not implemented yet" ->{
-						System.out.println("You're stupid if you clicked this");
-					}
-					}
-				});
-				panel2.add(b);
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(3,3));
+		makeButtonPanel(BUTTON_LIST.get(pageNum));
+		add(buttonPanel);
+	}
+	private void makeButtonPanel(JButton[][] i) {
+		buttonPanel.removeAll();
+		for(JButton[] a : i) {
+			for(JButton b : a) {
+				buttonPanel.add(b);
 			}
 		}
-		add(panel2);
+		GUI.frame.revalidate();
+		GUI.frame.repaint();
+	}
+	private static int pageNum = 0;
+	private void makeButtons() {
+		for(String[][] page : BUTTON_PAGES) {
+			JButton[][] temp = new JButton[3][3];
+			for(int i = 0; i<3; i++) {
+				for(int j = 0; j<3; j++) {
+					temp[i][j] = new JButton(page[i][j]);
+				}
+			}
+			BUTTON_LIST.add(temp);
+		}
+		for(JButton[][] a : BUTTON_LIST) {
+			for(JButton[] b : a) {
+				for(JButton c : b) {
+					c.addActionListener(e->{
+						switch(e.getActionCommand()) {
+						case "Add Cmd" ->{
+							createPopup();
+						}
+						case "Chat" ->{
+							Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
+							if(Interactions.CHAT_ENABLED) {
+								Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting enabled!").queue();
+								System.out.println("Iggabot chatting enabled!");
+							} else {
+								Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting disabled!").queue();
+								System.out.println("Iggabot chatting disabled!");
+							}
+						}
+						case "Ideas" ->{
+							String str = "";
+							try {
+								for(String d : Files.readAllLines(Path.of(Main.PATH + "/Logs/Output/Ideas.txt"))){
+									str += d + "\n";
+								}
+							} catch (Exception e1) {e1.printStackTrace();}
+							System.out.println(str);
+						}
+						case "Next page" -> makeButtonPanel(BUTTON_LIST.get(++pageNum));
+						case "Previous page" -> makeButtonPanel(BUTTON_LIST.get(--pageNum));
+						case "Not implemented yet" ->{
+							System.out.println("You're stupid if you clicked this");
+						}
+						}
+					});
+				}
+			}
+		}
 	}
 	public static PopupInput createPopup() {
 
@@ -91,7 +145,7 @@ public class Panel extends JPanel {
 				System.out.println("case \"" + popup.getTxt().split(" : ")[0] + "\" ->{\r\n"
 						+ "\\\\Logic here\r\n"
 						+ "}");
-				System.out.println("Commands.slash(\"" + popup.getTxt().split(" : ")[0] + "\", \"" + popup.getTxt().split(" : ")[1] + "\", true)");
+				System.out.println("Commands.slash(\"" + popup.getTxt().split(" : ")[0] + "\", \"" + popup.getTxt().split(" : ")[1] + "\"");
 				popup.getOptions().forEach(a->{
 					String str = ".addOption(";
 					for(int i = 0; i<3; i++) {
@@ -100,12 +154,12 @@ public class Panel extends JPanel {
 						} else if(i==1) {
 							str += "\"" + a[i] + "\"" + ", ";
 						} else {
-							str += "\"" + a[i] + "\"" + ")";
+							str += "\"" + a[i] + "\"" + ", true)";
 						}
 					}
 					System.out.println(str);
 				});
-				
+
 			}
 		});
 		frame.add(new JScrollPane(popup.mainText), BorderLayout.NORTH);
