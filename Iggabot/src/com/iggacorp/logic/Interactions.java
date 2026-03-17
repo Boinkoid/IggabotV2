@@ -1,16 +1,9 @@
 package com.iggacorp.logic;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
@@ -46,15 +39,9 @@ public class Interactions extends ListenerAdapter {
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 		switch(event.getName()) {
-		default->{
-			event.reply("If you somehow did this, contact delta with the exact command you did").setEphemeral(true).queue();
-		}
-		case "cheer" ->{
-			event.reply("3 cheers for " + event.getOption("user").getAsMember().getUser().getEffectiveName() + "\nHip Hip Hooray!\nHip Hip Hooray!\nHip Hip Hooray!").queue();
-		}
-		case "sex" ->{
-			event.reply("Not implemented yet! Yell at butter to get the images!!!").setEphemeral(true).queue();
-		}
+		default->event.reply("If you somehow did this, contact delta with the exact command you did").setEphemeral(true).queue();
+		case "cheer" ->event.reply("3 cheers for " + event.getOption("user").getAsMember().getUser().getEffectiveName() + "\nHip Hip Hooray!\nHip Hip Hooray!\nHip Hip Hooray!").queue();
+		case "sex" ->event.reply("Not implemented yet! Yell at butter to get the images!!!").setEphemeral(true).queue();
 		case "idea" ->{
 			event.reply("Thank you for the idea! I'll get back to you about adding it").setEphemeral(true).queue();
 			String str = "";
@@ -85,9 +72,11 @@ public class Interactions extends ListenerAdapter {
 				if(str.substring(5).toLowerCase().contains("true")) {
 					CHAT_ENABLED = true;
 					event.getChannel().sendMessage("Iggabot chatting enabled!").queue();
+					System.out.println("Iggabot chatting enabled!");
 				} else {
 					CHAT_ENABLED = false;
 					event.getChannel().sendMessage("Iggabot chatting disabled!").queue();
+					System.out.println("Iggabot chatting disabled!");
 				}
 			}
 		}

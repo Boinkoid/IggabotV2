@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,6 +24,7 @@ import javax.swing.KeyStroke;
 import com.iggacorp.logic.Interactions;
 import com.iggacorp.logic.Main;
 
+import net.dv8tion.jda.api.entities.channel.concrete.Category;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 
 
@@ -36,7 +36,7 @@ public class Panel extends JPanel {
 	public static ArrayList<JButton[][]> BUTTON_LIST = new ArrayList<>();
 	private static final String[][] BUTTON_PAGE_1 = {
 			{"Add Cmd","Chat","Ideas"},
-			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Delete channel","Not implemented yet","Not implemented yet"},
 			{"Not implemented yet","Not implemented yet","Next page"}};
 	private static final String[][] BUTTON_PAGE_2 = {
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
@@ -115,6 +115,14 @@ public class Panel extends JPanel {
 						}
 						case "Next page" -> makeButtonPanel(BUTTON_LIST.get(++pageNum));
 						case "Previous page" -> makeButtonPanel(BUTTON_LIST.get(--pageNum));
+						case "Delete channel" ->{
+							Category cat = Main.getIggabotChannelCategory();
+							String str = "";
+							str = Main.bot.getChannelById(TextChannel.class, Main.IGGABOT_CHANNEL).getName();
+							Main.bot.getChannelById(TextChannel.class, Main.IGGABOT_CHANNEL).delete().complete();
+							cat.createTextChannel(str).complete();
+							Main.IGGABOT_CHANNEL = Main.getIggabotChannel();
+						}
 						case "Not implemented yet" ->{
 							System.out.println("You're stupid if you clicked this");
 						}
