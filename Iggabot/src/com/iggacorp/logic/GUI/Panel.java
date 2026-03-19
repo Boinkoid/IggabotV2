@@ -35,9 +35,9 @@ public class Panel extends JPanel {
 	public static JPanel buttonPanel;
 	public static ArrayList<JButton[][]> BUTTON_LIST = new ArrayList<>();
 	private static final String[][] BUTTON_PAGE_1 = {
-			{"Add Cmd","Chat","Ideas"},
-			{"Delete channel","Not implemented yet","Not implemented yet"},
-			{"Not implemented yet","Not implemented yet","Next page"}};
+			{"Add Cmd","Chat","Delete channel"},
+			{"Get Text Channels","Make All Text","Make Igg Files"},
+			{"Reset AI","Ideas","Next page"}};
 	private static final String[][] BUTTON_PAGE_2 = {
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
@@ -91,9 +91,7 @@ public class Panel extends JPanel {
 				for(JButton c : b) {
 					c.addActionListener(e->{
 						switch(e.getActionCommand()) {
-						case "Add Cmd" ->{
-							createPopup();
-						}
+						case "Add Cmd" ->createPopup();
 						case "Chat" ->{
 							Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
 							if(Interactions.CHAT_ENABLED) {
@@ -123,6 +121,22 @@ public class Panel extends JPanel {
 							cat.createTextChannel(str).complete();
 							Main.IGGABOT_CHANNEL = Main.getIggabotChannel();
 						}
+						case "Make All Text" -> { 
+							try  {
+								Main.getAllChats();
+							} catch (Exception e1){
+								e1.printStackTrace();
+							}
+						}
+						case "Make Igg Files" ->{ 
+							try  {
+								Main.makeIggFiles();
+							} catch (Exception e1){
+								e1.printStackTrace();
+							}
+						}
+						case "Get Text Channels" -> Main.getTextChannels();
+						case "Reset AI" ->Main.resetAI();
 						case "Not implemented yet" ->{
 							System.out.println("You're stupid if you clicked this");
 						}
@@ -132,6 +146,7 @@ public class Panel extends JPanel {
 			}
 		}
 	}
+	//Popup windows code for add cmd, no touchy
 	public static PopupInput createPopup() {
 
 		PopupInput popup = new PopupInput();
@@ -215,7 +230,6 @@ public class Panel extends JPanel {
 
 		return popup;
 	}
-
 	public static class PopupInput {
 
 		JTextArea mainText;
@@ -238,7 +252,6 @@ public class Panel extends JPanel {
 			return list;
 		}
 	}
-
 	static class OptionRow {
 
 		JComboBox<String> dropdown;

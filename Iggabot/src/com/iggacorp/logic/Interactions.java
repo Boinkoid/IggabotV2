@@ -15,7 +15,7 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 public class Interactions extends ListenerAdapter {
 
 
-	AI ai = iggAI();
+	public static AI igg = iggAI();
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
 				Commands.slash("cheer", "cheers for the user")
@@ -27,15 +27,13 @@ public class Interactions extends ListenerAdapter {
 
 				).queue();
 	}
-
-	private AI iggAI() {
+	public static AI iggAI() {
 		AI i = null;
 		try {
 			i = new AI(Main.PATH + "/Logs/Training/IggChats.txt","llama3");
 		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
-
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 		switch(event.getName()) {
@@ -68,6 +66,17 @@ public class Interactions extends ListenerAdapter {
 		//Admin Commands
 		if(event.getMessage().getContentRaw().startsWith("i!")&&isAdmin(event)) {
 			String str = event.getMessage().getContentRaw().substring(2);
+			if(str.contains("help")) {
+				event.getMessage().reply(
+						"Admin commands:" +
+						"i!help <- Displays this list" +
+						"i!chat true/false <- Enables/Disables Iggabot Chatting in  #¡-✧┊iggabot"/* +
+						"i!activity tru/false <- Enables/Disables Iggabot Activities" +
+						"i! <- " +
+						"i! <- " +
+						"i! <- "*/ 
+					).queue();
+			}
 			if(str.contains("chat")) {
 				if(str.substring(5).toLowerCase().contains("true")) {
 					CHAT_ENABLED = true;
@@ -82,7 +91,7 @@ public class Interactions extends ListenerAdapter {
 		}
 		//Chatting
 		if(CHAT_ENABLED&&event.getChannel().getId().equals(Main.IGGABOT_CHANNEL)) {
-			String str = ai.chat(event.getMessage().getContentDisplay());
+			String str = igg.chat(event.getMessage().getContentDisplay());
 			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("niggabot")||str.toLowerCase().contains("niggagi")||str.toLowerCase().contains("nigger")) {
 				str = "Bot said the N Word, this is bad and is currently being removed.";
 			}

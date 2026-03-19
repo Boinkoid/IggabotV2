@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 import javax.imageio.ImageIO;
@@ -21,32 +22,21 @@ public class GUI {
 
 	//Main EDT
 	public static void main(String[] args) throws Exception {
-		new Main();
 		gui = new GUI();
+		new Main();
 		loadLogs();
-		//makeIggFiles();
 	}
-
-	/*private static void makeIggFiles() throws Exception {
-		BufferedReader r = new BufferedReader(new FileReader(new File(PATH + "/Logs/Training/The Iggacorp Files.txt")));
-		BufferedWriter w = new BufferedWriter(new FileWriter(new File(PATH + "/Logs/Training/IggChats.txt")));
-		for(String e : r.readAllLines()) {
-			if((e.split(":")[0].equals("1411486569386213376")||e.split(":")[0].equals("1113320968589414544"))&&e.split(":").length>1&&!e.contains("https//")&&!e.contains("@")) {
-				w.write(e.split(":")[1] + "\n");
-			}
-		}
-		w.flush();
-	}*/
 
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {
 		frame = new JFrame("Iggabot"); 
 		frame.setIconImage(ImageIO.read(new File(PATH + "/Images/Teto.jpg")));
-		frame.setSize(800,600);
+		frame.setSize(847,602);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new Panel());
+		frame.setResizable(false);
 		frame.setVisible(true);
 	}
 

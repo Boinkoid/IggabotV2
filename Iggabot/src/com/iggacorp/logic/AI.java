@@ -12,91 +12,84 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AI {
 
-	private final HttpClient client;
-	private final String styleExamples;
-	private final String model;
-	private final ObjectMapper mapper = new ObjectMapper();
+    private final HttpClient client;
+    private final String styleExamples;
+    private final String model;
+    private final ObjectMapper mapper = new ObjectMapper();
 
-	public AI(String filePath, String model) throws Exception {
+    public AI(String filePath, String model) throws Exception {
+        startOllama();
+        this.client = HttpClient.newHttpClient();
+        this.model = model;
 
-		startOllama();
+        StringBuilder builder = new StringBuilder();
 
-		this.client = HttpClient.newHttpClient();
-		this.model = model;
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        String line;
 
-		StringBuilder builder = new StringBuilder();
+        while ((line = reader.readLine()) != null) {
+            builder.append(line).append("\n");
+        }
 
-		BufferedReader reader = new BufferedReader(new FileReader(filePath));
-		String line;
+        reader.close();
 
-		while ((line = reader.readLine()) != null) {
-			builder.append(line).append("\n");
-		}
+        styleExamples = builder.toString();
+    }
 
-		reader.close();
+    private void startOllama() {
+        try {
+            ProcessBuilder pb = new ProcessBuilder("ollama", "serve");
+            pb.start();
+            Thread.sleep(3000);
+        } catch (Exception e) {
+            System.out.println("Ollama may already be running.");
+        }
+    }
 
-		styleExamples = builder.toString();
-	}
+    public String chat(String userMessage) {
+        try {
+            String prompt = """
+                    You are texting exactly like this person.
+                    Your name is Iggagi.
+                    You cannot swear, including in abbreviations like wth and lmao.
+                    ONLY SAY THE RESPONSE, NOTHING TO HINT YOU ARE AI!
+                    
+                    Interactions they've had:
+                    %s
 
-	private void startOllama() {
-		try {
+                    Reply the way they would.
 
-			ProcessBuilder pb = new ProcessBuilder("ollama", "serve");
-			pb.start();
+                    User: %s
+                    """.formatted(styleExamples, userMessage);
 
-			Thread.sleep(3000);
+            String safePrompt = prompt
+                    .replace("\\", "\\\\")
+                    .replace("\"", "\\\"")
+                    .replace("\n", "\\n");
 
-		} catch (Exception e) {
-			System.out.println("Ollama may already be running.");
-		}
-	}
+            String json = """
+                    {
+                    "model": "%s",
+                    "prompt": "%s",
+                    "stream": false
+                    }
+                    """.formatted(model, safePrompt);
 
-	public String chat(String userMessage) {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create("http://localhost:11434/api/generate"))
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(json))
+                    .build();
 
-		try {
+            HttpResponse<String> response =
+                    client.send(request, HttpResponse.BodyHandlers.ofString());
 
-			String prompt = """
-					You are texting exactly like this person.
-					Your name is Iggagi.
-					You cannot swear, including in abbreviations like wth and lmao.
+            JsonNode node = mapper.readTree(response.body());
+            String responseText = node.get("response").asText();
 
-					Examples of how they text:
-					%s
-
-					Reply the way they would.
-
-					User: %s
-					""".formatted(styleExamples, userMessage);
-
-			String safePrompt = prompt
-					.replace("\\", "\\\\")
-					.replace("\"", "\\\"")
-					.replace("\n", "\\n");
-
-			String json = """
-					{
-					"model": "%s",
-					"prompt": "%s",
-					"stream": false
-					}
-					""".formatted(model, safePrompt);
-
-			HttpRequest request = HttpRequest.newBuilder()
-					.uri(URI.create("http://localhost:11434/api/generate"))
-					.header("Content-Type", "application/json")
-					.POST(HttpRequest.BodyPublishers.ofString(json))
-					.build();
-
-			HttpResponse<String> response =
-					client.send(request, HttpResponse.BodyHandlers.ofString());
-
-			JsonNode node = mapper.readTree(response.body());
-
-			return node.get("response").asText();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "Error, contact delta asap";
-		}
-	}
+            return responseText;
+        } catch (Exception e) {
+            return "Error, contact delta asap\n" + e.getCause();
+        }
+    }
 }
