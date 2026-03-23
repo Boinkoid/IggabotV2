@@ -16,10 +16,8 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 public class Interactions extends ListenerAdapter {
 
-	static String[] SLURS = {"fag","faggot","fagot","tranny","dyke","lesbo","","",""};
 	static String[] SWEARS = {"fuck","shit","dick","cum","ass","bitch","bastard","cunt"};
-	public static Swears SWEAR_COUNT = new Swears(SWEARS);
-	public static Slurs SLUR_COUNT = new Slurs(SLURS);
+	public static BadWords SWEAR_COUNT = new BadWords(SWEARS,new File(Main.PATH+"/Logs/Output/Swears.txt"));
 	public static AI igg = iggAI();
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
@@ -28,8 +26,9 @@ public class Interactions extends ListenerAdapter {
 				Commands.slash("sex", "Sex eachother")
 					.addOption(OptionType.USER, "user", "Sex's the user", true),
 				Commands.slash("idea", "Give me your ideas")
-					.addOption(OptionType.STRING, "idea", "Please give me your ideas, im desperate T-T", true)
-
+					.addOption(OptionType.STRING, "idea", "Please give me your ideas, im desperate T-T", true),
+				Commands.slash("swear","Displays the swear count")
+					.addOption(OptionType.USER, "user", "Shows the amount of time the user has sworn")
 				).queue();
 	}
 	public static AI iggAI() {
@@ -53,6 +52,13 @@ public class Interactions extends ListenerAdapter {
 				w.append(str + "\n");
 				w.flush();
 			} catch(Exception e) {e.printStackTrace();}
+		}
+		case "swear" -> {
+			if(event.getOption("user")!=null) {
+				event.reply(SWEAR_COUNT.slashGet(event.getUser())).queue();
+			} else {
+				event.reply(SWEAR_COUNT.slashGet()).queue();
+			}
 		}
 		}
 	}
@@ -103,27 +109,12 @@ public class Interactions extends ListenerAdapter {
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
+		//Swear Count
 		if(containsSwears(msg.getContentDisplay())) {
 			SWEAR_COUNT.add(msg.getContentDisplay());
 		}
-		if(containsSlurs(msg.getContentDisplay())) {
-			
-		}
-	}
-	private String getSwearAmount(String str) {
-		String shit[]
-		return null;
-	}
-	private boolean containsSlurs(String str) {
-		str=str.toLowerCase();
-		for(String i : SLURS) {
-			if(str.contains(i)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	private boolean containsSwears(String str) {
+	}	
+	public static boolean containsSwears(String str) {
 		str=str.toLowerCase();
 		for(String i : SWEARS) {
 			if(str.contains(i)) {
