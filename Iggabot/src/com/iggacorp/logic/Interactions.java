@@ -16,9 +16,10 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 public class Interactions extends ListenerAdapter {
 
-
-	public static Swears SWEAR_COUNT = new Swears();
-	public static Slurs SLUR_COUNT = new Slurs();
+	static String[] SLURS = {"fag","faggot","fagot","tranny","dyke","lesbo","","",""};
+	static String[] SWEARS = {"fuck","shit","dick","cum","ass","bitch","bastard","cunt"};
+	public static Swears SWEAR_COUNT = new Swears(SWEARS);
+	public static Slurs SLUR_COUNT = new Slurs(SLURS);
 	public static AI igg = iggAI();
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
@@ -103,7 +104,7 @@ public class Interactions extends ListenerAdapter {
 			event.getChannel().sendMessage(str).queue();
 		}
 		if(containsSwears(msg.getContentDisplay())) {
-			SWEAR_COUNT=new BigInteger(SWEAR_COUNT.add(new BigInteger(getSwearAmount(msg.getContentDisplay()))).toString());
+			SWEAR_COUNT.add(msg.getContentDisplay());
 		}
 		if(containsSlurs(msg.getContentDisplay())) {
 			
@@ -113,7 +114,6 @@ public class Interactions extends ListenerAdapter {
 		String shit[]
 		return null;
 	}
-	String[] SLURS = {"fag","faggot","fagot","tranny","dyke","lesbo","","",""};
 	private boolean containsSlurs(String str) {
 		str=str.toLowerCase();
 		for(String i : SLURS) {
@@ -125,7 +125,12 @@ public class Interactions extends ListenerAdapter {
 	}
 	private boolean containsSwears(String str) {
 		str=str.toLowerCase();
-		return (str.contains("fuck")||str.contains("shit")||str.contains("dick")||str.contains("cum")||str.contains("ass")||str.contains("bitch")||str.contains("bastard")||str.contains("")||);
+		for(String i : SWEARS) {
+			if(str.contains(i)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
@@ -134,10 +139,7 @@ public class Interactions extends ListenerAdapter {
 		BufferedWriter i = null;
 		try {
 			i = new BufferedWriter(new FileWriter(new File(string)));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
 	private boolean exclude(MessageReceivedEvent event) {
