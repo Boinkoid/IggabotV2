@@ -4,8 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -15,6 +17,8 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 public class Interactions extends ListenerAdapter {
 
 
+	public static Swears SWEAR_COUNT = new Swears();
+	public static Slurs SLUR_COUNT = new Slurs();
 	public static AI igg = iggAI();
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
@@ -55,6 +59,7 @@ public class Interactions extends ListenerAdapter {
 	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
+		Message msg = event.getMessage();
 		if(event.getAuthor().isBot()) {return;}
 		//Logs
 		if(exclude(event)) {
@@ -97,8 +102,31 @@ public class Interactions extends ListenerAdapter {
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
+		if(containsSwears(msg.getContentDisplay())) {
+			SWEAR_COUNT=new BigInteger(SWEAR_COUNT.add(new BigInteger(getSwearAmount(msg.getContentDisplay()))).toString());
+		}
+		if(containsSlurs(msg.getContentDisplay())) {
+			
+		}
 	}
-
+	private String getSwearAmount(String str) {
+		String shit[]
+		return null;
+	}
+	String[] SLURS = {"fag","faggot","fagot","tranny","dyke","lesbo","","",""};
+	private boolean containsSlurs(String str) {
+		str=str.toLowerCase();
+		for(String i : SLURS) {
+			if(str.contains(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	private boolean containsSwears(String str) {
+		str=str.toLowerCase();
+		return (str.contains("fuck")||str.contains("shit")||str.contains("dick")||str.contains("cum")||str.contains("ass")||str.contains("bitch")||str.contains("bastard")||str.contains("")||);
+	}
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}

@@ -136,7 +136,7 @@ public class Panel extends JPanel {
 							}
 						}
 						case "Get Text Channels" -> Main.getTextChannels();
-						case "Reset AI" ->Main.resetAI();
+						case "Reset AI" -> Main.resetAI();
 						case "Not implemented yet" ->{
 							System.out.println("You're stupid if you clicked this");
 						}
