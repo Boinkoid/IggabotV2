@@ -210,7 +210,7 @@ public class Panel extends JPanel {
 		JButton addButton = new JButton("Add Option");
 		frame.add(addButton, BorderLayout.SOUTH);
 
-		addButton.addActionListener(e -> {
+		addButton.addActionListener(_ -> {
 
 			JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
@@ -229,7 +229,7 @@ public class Panel extends JPanel {
 
 			popup.optionRows.add(new OptionRow(dropdown, field1, field2));
 
-			remove.addActionListener(ev -> {
+			remove.addActionListener(_ -> {
 				popup.optionsPanel.remove(row);
 				popup.optionsPanel.revalidate();
 				popup.optionsPanel.repaint();

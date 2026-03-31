@@ -4,10 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigInteger;
 
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -16,8 +14,6 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 public class Interactions extends ListenerAdapter {
 
-	//Swear list
-	static String[] SWEARS = {"fuck","shit","dick","cum","ass","bitch","bastard","cunt"};
 	//Makes the iggAI, leaving room for more people to become AI
 	public static AI igg = iggAI();
 	//Adds the commands into the server 
@@ -66,7 +62,6 @@ public class Interactions extends ListenerAdapter {
 	//The logic that happens whenever a message is sent
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		Message msg = event.getMessage();
 		if(event.getAuthor().isBot()) {return;}
 		//Logs
 		if(exclude(event)) {
@@ -104,21 +99,11 @@ public class Interactions extends ListenerAdapter {
 		//Chatting
 		if(CHAT_ENABLED&&event.getChannel().getId().equals(Main.IGGABOT_CHANNEL)) {
 			String str = igg.chat(event.getMessage().getContentDisplay());
-			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("niggabot")||str.toLowerCase().contains("niggagi")||str.toLowerCase().contains("nigger")) {
+			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("nigger")) {
 				str = "Bot said the N Word, this is bad and is currently being removed.";
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
-	}
-	//Just checks if the message contains a swear, look in BadWords for use
-	public static boolean containsSwears(String str) {
-		str=str.toLowerCase();
-		for(String i : SWEARS) {
-			if(str.contains(i)) {
-				return true;
-			}
-		}
-		return false;
 	}
 	//Just a protection against long code :p
 	private boolean isAdmin(MessageReceivedEvent event) {

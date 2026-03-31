@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-import com.iggacorp.logic.GUI.GUI;
-
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
