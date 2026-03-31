@@ -41,6 +41,7 @@ public class Main {
 		IGGABOT_CHANNEL = getIggabotChannel();
 		guild = bot.getGuildById(IGGACORP);
 	}
+	//Returns all the text channels
 	public static void getTextChannels(){
 		String str = "";
 		for(Channel i : bot.getTextChannels()) {
@@ -48,6 +49,7 @@ public class Main {
 		}
 		System.out.println(str);
 	}
+	//Makes the igg files for AI
 	public static void makeIggFiles() throws Exception {
 		getAllChats();
 		BufferedWriter w = new BufferedWriter(new FileWriter(new File(PATH + "/Logs/Training/IggChats.txt")));
@@ -61,11 +63,13 @@ public class Main {
 		resetAI();
 		System.out.println("Made Igg Files!");
 	}
+	//Resets the igg ai
 	public static void resetAI() {
 		Interactions.igg = Interactions.iggAI();
 		bot.getChannelById(TextChannel.class, IGGABOT_CHANNEL).sendMessage("Reset AI!").queue();
 		System.out.println("Reset AI!");
 	}
+	//Gets all chats from the appropriate channels
 	public static void getAllChats() throws Exception{
 		ArrayList<List<Message>> guh = new ArrayList<>();
 		for(TextChannel i : bot.getTextChannels()) {
@@ -84,11 +88,13 @@ public class Main {
 		w.close();
 		System.out.println("Got all chats!");
 	}
+	//Returns the main path
 	private static String getMainPath() {
 		Path currentRelativePath = Paths.get("");
 		String i = currentRelativePath.toAbsolutePath().toString();
 		return i + "/src/Resources/";
 	}
+	//Returns the iggabot ai channel for easier resetting
 	public static Category getIggabotChannelCategory() {
 		Category i = null;
 		for(Category e : guild.getCategories()) {
@@ -100,13 +106,11 @@ public class Main {
 		}
 		return i;
 	}
+	//Returns the iggabot channel
 	public static String getIggabotChannel() {
 		try {
 			bot.awaitReady();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (Exception e) {e.printStackTrace();}
 		String b = "";
 		for(TextChannel i : bot.getTextChannels()) {
 			if(i.getName().equals("¡-✧┊iggabot")) {

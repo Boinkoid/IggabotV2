@@ -34,6 +34,7 @@ public class Panel extends JPanel {
 	public static JTextArea txt;
 	public static JPanel buttonPanel;
 	public static ArrayList<JButton[][]> BUTTON_LIST = new ArrayList<>();
+	//Button Pages
 	private static final String[][] BUTTON_PAGE_1 = {
 			{"Add Cmd","Chat","Delete channel"},
 			{"Get Text Channels","Make All Text","Make Igg Files"},
@@ -45,7 +46,14 @@ public class Panel extends JPanel {
 	private static final String[][] BUTTON_PAGE_3 = {
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
-			{"Previous page","Not implemented yet","Not implemented yet"}};
+			{"Previous page","Not implemented yet","Next page"}};
+	/* BUTTON_PAGE TEMPLATE
+	  private static final String[][] BUTTON_PAGE_1234123421342134213412342341241234 = {
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Previous page","Not implemented yet","Next page"}};	  
+	*/
+	//Button Pages array
 	private static final String[][][] BUTTON_PAGES = {BUTTON_PAGE_1,BUTTON_PAGE_2,BUTTON_PAGE_3};
 	public Panel() {
 		super();
@@ -75,6 +83,7 @@ public class Panel extends JPanel {
 		GUI.frame.revalidate();
 		GUI.frame.repaint();
 	}
+	//Button logic for the panel
 	private static int pageNum = 0;
 	private void makeButtons() {
 		for(String[][] page : BUTTON_PAGES) {
@@ -111,7 +120,12 @@ public class Panel extends JPanel {
 							} catch (Exception e1) {e1.printStackTrace();}
 							System.out.println(str);
 						}
-						case "Next page" -> makeButtonPanel(BUTTON_LIST.get(++pageNum));
+						case "Next page" -> {
+							int guh = ++pageNum;
+							if(!(guh<BUTTON_PAGES.length)) {
+								makeButtonPanel(BUTTON_LIST.get(guh));
+							}
+						}
 						case "Previous page" -> makeButtonPanel(BUTTON_LIST.get(--pageNum));
 						case "Delete channel" ->{
 							Category cat = Main.getIggabotChannelCategory();
@@ -146,7 +160,7 @@ public class Panel extends JPanel {
 			}
 		}
 	}
-	//Popup windows code for add cmd, no touchy
+	//Popup window's code for add cmd, no touchy
 	public static PopupInput createPopup() {
 
 		PopupInput popup = new PopupInput();

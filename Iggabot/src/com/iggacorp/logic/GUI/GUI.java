@@ -19,14 +19,12 @@ public class GUI {
 
 	private static final Path PATH = Main.PATH;
 	public static GUI gui;
-
 	//Main EDT
 	public static void main(String[] args) throws Exception {
 		gui = new GUI();
 		new Main();
 		loadLogs();
 	}
-
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {
@@ -39,7 +37,6 @@ public class GUI {
 		frame.setResizable(false);
 		frame.setVisible(true);
 	}
-
 	//Loads the ouput logs
 	static BufferedWriter outLog = create(PATH + "/Logs/Output/Log.txt");
 	static BufferedWriter errLog = create(PATH + "/Logs/Output/Err.txt");;

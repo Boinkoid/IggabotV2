@@ -20,6 +20,12 @@ public class BadWords {
 	 * test it out
 	 * make sure it works
 	 * when it inevitably doesnt, cook hard lowk
+	 * 
+	 * rn this is in development
+	 * currently im gonna redo everything, bc rn its kinda sucky
+	 * the goal is that it will make a file with a users discord ID and it will contain all of the swears the user has said
+	 * Lowk might just delete this bc it kinda sucks. If i do go forward tho, i wanna put in a leaderboard
+	 * 
 	 * */
 	BigInteger[] count;
 	String[] swears;

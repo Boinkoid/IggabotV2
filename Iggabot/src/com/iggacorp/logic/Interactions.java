@@ -16,9 +16,11 @@ import net.dv8tion.jda.api.interactions.commands.build.Commands;
 
 public class Interactions extends ListenerAdapter {
 
+	//Swear list
 	static String[] SWEARS = {"fuck","shit","dick","cum","ass","bitch","bastard","cunt"};
-	public static BadWords SWEAR_COUNT = new BadWords(SWEARS,new File(Main.PATH+"/Logs/Output/Swears.txt"));
+	//Makes the iggAI, leaving room for more people to become AI
 	public static AI igg = iggAI();
+	//Adds the commands into the server
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
 				Commands.slash("cheer", "cheers for the user")
@@ -31,6 +33,7 @@ public class Interactions extends ListenerAdapter {
 					.addOption(OptionType.USER, "user", "Shows the amount of time the user has sworn")
 				).queue();
 	}
+	//Makes the IggAI
 	public static AI iggAI() {
 		AI i = null;
 		try {
@@ -38,6 +41,7 @@ public class Interactions extends ListenerAdapter {
 		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
+	//Logic for all the slash commands
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
 		switch(event.getName()) {
@@ -53,17 +57,13 @@ public class Interactions extends ListenerAdapter {
 				w.flush();
 			} catch(Exception e) {e.printStackTrace();}
 		}
-		case "swear" -> {
-			if(event.getOption("user")!=null) {
-				event.reply(SWEAR_COUNT.slashGet(event.getUser())).queue();
-			} else {
-				event.reply(SWEAR_COUNT.slashGet()).queue();
-			}
-		}
 		}
 	}
+	//Weather the iggaAI chatting is enabled
 	public static boolean CHAT_ENABLED = false;
+	//Server Logger
 	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
+	//The logic that happens whenever a message is sent
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
 		Message msg = event.getMessage();
@@ -109,11 +109,8 @@ public class Interactions extends ListenerAdapter {
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
-		//Swear Count
-		if(containsSwears(msg.getContentDisplay())) {
-			SWEAR_COUNT.add(msg.getContentDisplay());
-		}
-	}	
+	}
+	//Just checks if the message contains a swear, look in BadWords for use
 	public static boolean containsSwears(String str) {
 		str=str.toLowerCase();
 		for(String i : SWEARS) {
@@ -123,9 +120,11 @@ public class Interactions extends ListenerAdapter {
 		}
 		return false;
 	}
+	//Just a protection against long code :p
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}
+	//A way to get around the error
 	private BufferedWriter create(String string) {
 		BufferedWriter i = null;
 		try {
@@ -133,6 +132,7 @@ public class Interactions extends ListenerAdapter {
 		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
+	//All of the channels that wont be logged, like logs or boombox
 	private boolean exclude(MessageReceivedEvent event) {
 		boolean b = true;
 		switch(event.getChannel().getId()) {

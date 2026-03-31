@@ -12,6 +12,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class AI {
 
+	/*
+	 * ts is black magic to me lowk
+	 * i have no clue how it works
+	 * */
     private final HttpClient client;
     private final String styleExamples;
     private final String model;
