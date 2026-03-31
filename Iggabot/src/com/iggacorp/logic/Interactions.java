@@ -20,7 +20,7 @@ public class Interactions extends ListenerAdapter {
 	static String[] SWEARS = {"fuck","shit","dick","cum","ass","bitch","bastard","cunt"};
 	//Makes the iggAI, leaving room for more people to become AI
 	public static AI igg = iggAI();
-	//Adds the commands into the server
+	//Adds the commands into the server 
 	public Interactions(JDA bot) {
 		bot.updateCommands().addCommands(
 				Commands.slash("cheer", "cheers for the user")
