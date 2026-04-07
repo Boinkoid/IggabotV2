@@ -30,6 +30,7 @@ public class Interactions extends ListenerAdapter {
 				.addOption(OptionType.USER, "user", "Shows the amount of time the user has sworn")
 				).queue();
 	}
+	
 	//Makes the IggAI
 	public static AI iggAI() {
 		AI i = null;
@@ -38,6 +39,7 @@ public class Interactions extends ListenerAdapter {
 		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
+	
 	//Logic for all the slash commands
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -56,7 +58,8 @@ public class Interactions extends ListenerAdapter {
 		}
 		}
 	}
-	//Weather the iggaAI chatting is enabled
+	
+	//Whether the iggaAI chatting is enabled
 	public static boolean CHAT_ENABLED = false;
 	//Server Logger
 	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
@@ -64,11 +67,13 @@ public class Interactions extends ListenerAdapter {
 	String ADMIN_COMMAND_HELP = "Admin commands:\n" +
 			"i!help <- Displays this list\n" +
 			"i!chat true/false <- Enables/Disables Iggabot Chatting in  #¡-✧┊iggabot\n" +
-			"i!molest <- spams the user with balls\n";
-	/*"i!activity tru/false <- Enables/Disables Iggabot Activities\n" +
+			"i!molest <- spams the user with balls\n" + 
+			"i!activity tru/false <- Enables/Disables Iggabot Activities\n";//not implemented yet
+	/*" +
 	"i! <- \n" +
 	"i! <- \n" +
 	"i! <- \n"*/ 
+	
 	//The logic that happens whenever a message is sent
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
