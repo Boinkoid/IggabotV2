@@ -1,3 +1,4 @@
 Logarithmic Functionality: make currency frfr iggacoins n shit and get ideas for how they should be used
 Logarithmic Functionality: lowk figure out something for /yaoi, maybe have it be like ai make a fic ab 2 people and make it yaoi, but only have it be like a short paragraph
 Logarithmic Functionality: make gambling into an activity like wordle. Figure out the api
+Logarithmic Functionality: /freaky chat: for iggabot channel, makes iggabot respond in a freaky way

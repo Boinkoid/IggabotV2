@@ -92,7 +92,7 @@ public class Main {
 		String i = currentRelativePath.toAbsolutePath().toString();
 		return i + "/src/Resources/";
 	}
-	//Returns the iggabot ai channel for easier resetting
+	//Returns the iggabot ai channel category for easier resetting
 	public static Category getIggabotChannelCategory() {
 		Category i = null;
 		for(Category e : guild.getCategories()) {
@@ -104,7 +104,7 @@ public class Main {
 		}
 		return i;
 	}
-	//Returns the iggabot channel
+	//Returns the iggabot channel ID
 	public static String getIggabotChannel() {
 		try {
 			bot.awaitReady();

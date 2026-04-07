@@ -23,6 +23,9 @@ public class GUI {
 		gui = new GUI();
 		new Main();
 		loadLogs();
+		while(Main.IGGABOT_CHANNEL==null) {
+		}
+		frame.setVisible(true);
 	}
 	//Makes frame
 	public static JFrame frame;
@@ -34,7 +37,6 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new Panel());
 		frame.setResizable(false);
-		frame.setVisible(true);
 	}
 	//Loads the ouput logs
 	static BufferedWriter outLog = create(PATH + "/Logs/Output/Log.txt");

@@ -122,11 +122,18 @@ public class Panel extends JPanel {
 						}
 						case "Next page" -> {
 							int guh = ++pageNum;
-							if(!(guh<BUTTON_PAGES.length)) {
-								makeButtonPanel(BUTTON_LIST.get(guh));
+							if(guh>BUTTON_LIST.size()) {
+								guh = 0;
 							}
+							makeButtonPanel(BUTTON_LIST.get(guh));
 						}
-						case "Previous page" -> makeButtonPanel(BUTTON_LIST.get(--pageNum));
+						case "Previous page" -> {
+							int guh = --pageNum;
+							if(guh<0) {
+								guh = BUTTON_LIST.size();
+							}
+							makeButtonPanel(BUTTON_LIST.get(guh));
+						}
 						case "Delete channel" ->{
 							Category cat = Main.getIggabotChannelCategory();
 							String str = "";
