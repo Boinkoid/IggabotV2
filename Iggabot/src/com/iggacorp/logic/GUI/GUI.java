@@ -17,14 +17,13 @@ import com.iggacorp.logic.Main;
 public class GUI {
 
 	private static final Path PATH = Main.PATH;
-	public static GUI gui;
 	//Main EDT
 	public static void main(String[] args) throws Exception {
-		gui = new GUI();
-		new Main();
+		new GUI();
 		loadLogs();
-		while(Main.IGGABOT_CHANNEL==null) {
-		}
+		new Main();
+		while(Main.IGGABOT_CHANNEL==null) {}//do nothing, just waits till the channel exists otherwise it causes huge issues
+		clearConsole();
 		frame.setVisible(true);
 	}
 	//Makes frame
@@ -41,7 +40,7 @@ public class GUI {
 	//Loads the ouput logs
 	static BufferedWriter outLog = create(PATH + "/Logs/Output/Log.txt");
 	static BufferedWriter errLog = create(PATH + "/Logs/Output/Err.txt");;
-	static OutputStream out = new OutputStream() {
+	public static OutputStream out = new OutputStream() {
 		@Override
 		public void write(int b) throws IOException {
 			JTextArea txt = Panel.txt;
@@ -73,5 +72,10 @@ public class GUI {
 		i = new BufferedWriter(new FileWriter(new File(string)));
 		} catch(Exception e) {e.printStackTrace();}
 		return i;
+	}
+	public static void clearConsole() {
+		Panel.txt.setText(null);
+		frame.revalidate();
+		frame.repaint();
 	}
 }

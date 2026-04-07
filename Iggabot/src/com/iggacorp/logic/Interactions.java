@@ -7,6 +7,9 @@ import java.io.IOException;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
+import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -30,7 +33,7 @@ public class Interactions extends ListenerAdapter {
 				.addOption(OptionType.USER, "user", "Shows the amount of time the user has sworn")
 				).queue();
 	}
-	
+
 	//Makes the IggAI
 	public static AI iggAI() {
 		AI i = null;
@@ -39,7 +42,7 @@ public class Interactions extends ListenerAdapter {
 		} catch (Exception e) {e.printStackTrace();}
 		return i;
 	}
-	
+
 	//Logic for all the slash commands
 	@Override
 	public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
@@ -58,7 +61,7 @@ public class Interactions extends ListenerAdapter {
 		}
 		}
 	}
-	
+
 	//Whether the iggaAI chatting is enabled
 	public static boolean CHAT_ENABLED = false;
 	//Server Logger
@@ -73,7 +76,7 @@ public class Interactions extends ListenerAdapter {
 	"i! <- \n" +
 	"i! <- \n" +
 	"i! <- \n"*/ 
-	
+
 	//The logic that happens whenever a message is sent
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
@@ -131,10 +134,55 @@ public class Interactions extends ListenerAdapter {
 			event.getChannel().sendMessage(str).queue();
 		}
 	}
+
+	//On joining the server sends a list of the rules to whomever joined
+	private static final String RULES = 
+			"fghjfghjfghjfghjgjh" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"";
+	@Override
+	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
+		String id = event.getMember().getUser().getId();
+		PrivateChannel pc = Main.bot.openPrivateChannelById(id).complete();
+		pc.sendMessage(RULES).queue();
+	}
+
+	//On leaving the server, iggabot will do something idk bro idk what to do here
+	private static final String LEAVE_MESSAGE = 
+			"Currently iggabot is in development so we dont exactly have a goodbye message\n" +
+			"So... Byeeee :3" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"" +
+			"";
+	@Override
+	public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
+		String id = event.getMember().getUser().getId();
+		PrivateChannel pc = Main.bot.openPrivateChannelById(id).complete();
+		pc.sendMessage(LEAVE_MESSAGE).queue();
+	}
 	//Just a protection against long code :p
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}
+
 	//A way to get around the error
 	private BufferedWriter create(String string) {
 		BufferedWriter i = null;

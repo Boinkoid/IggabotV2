@@ -119,6 +119,6 @@ public class Main {
 	}
 	//Makes the bot
 	private static JDA setupBot() throws Exception {
-		return JDABuilder.createDefault(Files.readString(Path.of("C:/NONWINDOWS/Iggabot/Logs/Static/Key.txt")), EnumSet.allOf(GatewayIntent.class)).build();
+		return JDABuilder.createDefault(Files.readString(Path.of("C:/NONWINDOWS/Iggabot/Key.txt")), EnumSet.allOf(GatewayIntent.class)).build();
 	}
 }

@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -36,11 +38,11 @@ public class Panel extends JPanel {
 	public static ArrayList<JButton[][]> BUTTON_LIST = new ArrayList<>();
 	//Button Pages
 	private static final String[][] BUTTON_PAGE_1 = {
-			{"Add Cmd","Chat","Delete channel"},
-			{"Get Text Channels","Make All Text","Make Igg Files"},
-			{"Reset AI","Ideas","Next page"}};
+			{"Clear Console","Chat","Delete channel"},
+			{"Reset AI","Make All Text","Make Igg Files"},
+			{"Previous page","Ideas","Next page"}};
 	private static final String[][] BUTTON_PAGE_2 = {
-			{"Not implemented yet","Not implemented yet","Not implemented yet"},
+			{"Get Text Channels","Not implemented yet","Not implemented yet"},
 			{"Not implemented yet","Not implemented yet","Not implemented yet"},
 			{"Previous page","Not implemented yet","Next page"}};
 	private static final String[][] BUTTON_PAGE_3 = {
@@ -100,7 +102,7 @@ public class Panel extends JPanel {
 				for(JButton c : b) {
 					c.addActionListener(e->{
 						switch(e.getActionCommand()) {
-						case "Add Cmd" ->createPopup();
+						case "Clear Console" -> GUI.clearConsole();
 						case "Chat" ->{
 							Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
 							if(Interactions.CHAT_ENABLED) {
@@ -122,16 +124,18 @@ public class Panel extends JPanel {
 						}
 						case "Next page" -> {
 							int guh = ++pageNum;
-							if(guh>BUTTON_LIST.size()) {
+							if(guh>=BUTTON_LIST.size()) {
 								guh = 0;
 							}
+							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
 						}
 						case "Previous page" -> {
 							int guh = --pageNum;
 							if(guh<0) {
-								guh = BUTTON_LIST.size();
+								guh = BUTTON_LIST.size()-1;
 							}
+							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
 						}
 						case "Delete channel" ->{
@@ -161,128 +165,11 @@ public class Panel extends JPanel {
 						case "Not implemented yet" ->{
 							System.out.println("You're stupid if you clicked this");
 						}
+						default -> System.out.println("Incorrect button");
 						}
 					});
 				}
 			}
-		}
-	}
-	//Popup window's code for add cmd, no touchy
-	public static PopupInput createPopup() {
-
-		PopupInput popup = new PopupInput();
-
-		JFrame frame = new JFrame("Input");
-		frame.setSize(500, 500);
-		frame.setLocationRelativeTo(null);
-		frame.setLayout(new BorderLayout());
-
-		popup.mainText = new JTextArea();
-		JTextArea mainText = popup.mainText; 
-		mainText.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "submit");
-		mainText.getInputMap().put(KeyStroke.getKeyStroke("shift ENTER"), "insert-break");
-
-		mainText.getActionMap().put("submit", new AbstractAction() {
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent e) {
-				frame.dispose();
-				System.out.println("case \"" + popup.getTxt().split(" : ")[0] + "\" ->{\r\n"
-						+ "\\\\Logic here\r\n"
-						+ "}");
-				System.out.println("Commands.slash(\"" + popup.getTxt().split(" : ")[0] + "\", \"" + popup.getTxt().split(" : ")[1] + "\"");
-				popup.getOptions().forEach(a->{
-					String str = ".addOption(";
-					for(int i = 0; i<3; i++) {
-						if(i==0) {
-							str += "OptionType." + a[i] + ", ";
-						} else if(i==1) {
-							str += "\"" + a[i] + "\"" + ", ";
-						} else {
-							str += "\"" + a[i] + "\"" + ", true)";
-						}
-					}
-					System.out.println(str);
-				});
-
-			}
-		});
-		frame.add(new JScrollPane(popup.mainText), BorderLayout.NORTH);
-
-		popup.optionsPanel = new JPanel();
-		popup.optionsPanel.setLayout(new BoxLayout(popup.optionsPanel, BoxLayout.Y_AXIS));
-
-		JScrollPane scroll = new JScrollPane(popup.optionsPanel);
-		frame.add(scroll, BorderLayout.CENTER);
-
-		JButton addButton = new JButton("Add Option");
-		frame.add(addButton, BorderLayout.SOUTH);
-
-		addButton.addActionListener(_ -> {
-
-			JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-			JComboBox<String> dropdown =
-					new JComboBox<>(new String[]{"USER","STRING","INT", "BOOLEAN", "ATTATCHMENT"});
-
-			JTextField field1 = new JTextField(8);
-			JTextField field2 = new JTextField(8);
-
-			JButton remove = new JButton("Remove");
-
-			row.add(dropdown);
-			row.add(field1);
-			row.add(field2);
-			row.add(remove);
-
-			popup.optionRows.add(new OptionRow(dropdown, field1, field2));
-
-			remove.addActionListener(_ -> {
-				popup.optionsPanel.remove(row);
-				popup.optionsPanel.revalidate();
-				popup.optionsPanel.repaint();
-				popup.optionRows.remove(popup.optionRows.size());
-			});
-
-			popup.optionsPanel.add(row);
-			popup.optionsPanel.revalidate();
-		});
-
-		frame.setVisible(true);
-
-		return popup;
-	}
-	public static class PopupInput {
-
-		JTextArea mainText;
-		JPanel optionsPanel;
-		List<OptionRow> optionRows = new ArrayList<>();
-
-		public String getTxt() {
-			return mainText.getText();
-		}
-
-		public List<String[]> getOptions() {
-			List<String[]> list = new ArrayList<>();
-			for (OptionRow r : optionRows) {
-				list.add(new String[]{
-						(String) r.dropdown.getSelectedItem(),
-						r.field1.getText(),
-						r.field2.getText()
-				});
-			}
-			return list;
-		}
-	}
-	static class OptionRow {
-
-		JComboBox<String> dropdown;
-		JTextField field1;
-		JTextField field2;
-
-		OptionRow(JComboBox<String> d, JTextField f1, JTextField f2) {
-			dropdown = d;
-			field1 = f1;
-			field2 = f2;
 		}
 	}
 }
