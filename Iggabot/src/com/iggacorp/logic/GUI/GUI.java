@@ -1,5 +1,4 @@
 package com.iggacorp.logic.GUI;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -11,18 +10,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-
 import com.iggacorp.logic.Main;
-
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
-
 public class GUI {
-
 	private static final Path PATH = Main.PATH;
 	//Main EDT
 	public static void main(String[] args) throws Exception {
@@ -36,7 +30,7 @@ public class GUI {
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {
-		frame = new JFrame("Iggabot"); 
+		frame = new JFrame("Iggabot");
 		frame.setIconImage(ImageIO.read(new File(PATH + "/Images/Teto.jpg")));
 		frame.setSize(847,602);
 		frame.setLocationRelativeTo(null);
