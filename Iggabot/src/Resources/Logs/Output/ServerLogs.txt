@@ -1,12 +1,525 @@
-Butter or sum: khef we are replacing you
-Butter or sum: with expendablechud
-Butter or sum: sorry man
-Butter or sum: its you
-Butter or sum: from the future
-Butter or sum: @Infinite Beef Glitch right delta
-ExpendableChud: @Kheflon have you ever touched a man in a loving, but violent way before?
-Kheflon: im a minor
-ExpendableChud: me too daddy
-Kheflon: https://cdn.discordapp.com/attachments/1424195992642650122/1430642270830333972/IMG_1591.gif
-ExpendableChud: It is me, Delta Dontavius Quingle the 4th
-Kheflon: https://tenor.com/view/last-night-gif-12642623664318617024
+(1307918257520640111)duckybananasforme: https://tenor.com/view/mewing-bird-gif-16835999897918525830
+(786431280848830504)wimpysimpyman5043: buh
+(968972544805834823)www.icecream: https://tenor.com/view/ultra-kill-gif-2498985663473192860
+(1310480246277148802)scryptess.me: pardon?????????
+(968972544805834823)www.icecream: https://tenor.com/view/last-night-gif-12642623664318617024
+(1491185760928268390)expendablechud: It is me, Delta Dontavius Quingle the 4th
+(968972544805834823)www.icecream: https://cdn.discordapp.com/attachments/1424195992642650122/1430642270830333972/IMG_1591.gif
+(1491185760928268390)expendablechud: me too daddy
+(1491185760928268390)expendablechud: <@968972544805834823> have you ever touched a man in a loving, but violent way before?
+(786431280848830504)wimpysimpyman5043: i dieded
+(1310480246277148802)scryptess.me: forever
+(1310480246277148802)scryptess.me: <@786431280848830504> goodbye
+(786431280848830504)wimpysimpyman5043: <:silly_cat:1253002316362027028>
+(1211781489931452447)Wordle: No Significant Harassment was playing
+(1211781489931452447)Wordle: **Your group is on a 6 day streak!** 🔥 Here are yesterday's results:
+👑 4/6: <@896168021725417572>
+5/6: <@740400910949417070>
+6/6: <@1411486569386213376>
+X/6: <@968972544805834823>
+(786431280848830504)wimpysimpyman5043: //All of the channels that wont be logged, like logs or boombox
+    private boolean exclude(MessageReceivedEvent event) {
+        boolean b = true;
+        switch(event.getChannel().getId()) {
+        case "1215154094289854464" ->{b=false;}
+        case "1214061647258320946" ->{b=false;}
+        case "1327781164211114086" ->{b=false;}
+        case "1393513733715923124" ->{b=false;}
+        case "1422661790147547156" ->{b=false;}
+        case "1427841583503376384" ->{b=false;}
+        case "1259173841784143902" ->{b=false;}
+        case "1211478753549746246" ->{b=false;}
+        case "1216513357591351466" ->{b=false;}
+        case "1220928851287474226" ->{b=false;}
+        case "1364069427670417518" ->{b=false;}
+        case "1213322706284581005" ->{b=false;}
+        case "1422657603665662034" ->{b=false;}
+        case "1474627951688679639" ->{b=false;}
+        case "1363296825280430182" ->{b=false;}
+        case "1213320041676935168" ->{b=false;}
+        case "1215813550094946374" ->{b=false;}
+        case "1213318763651268649" ->{b=false;}
+        case "1213319202908405800" ->{b=false;}
+        case "1293692890756943924" ->{b=false;}
+        case "1393508040837435502" ->{b=false;}
+        case "1393507211925393418" ->{b=false;}
+        case "1421596963907829913" ->{b=false;}
+        case "1393507487226794075" ->{b=false;}
+        case "1213671602252947466" ->{b=false;}
+        }
+        return b;
+    }
+(1310480246277148802)scryptess.me: smash
+(786431280848830504)wimpysimpyman5043: (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
+(1460785433314066566)Iggabot: You don't have admin permissions!
+(1310480246277148802)scryptess.me: i!
+(1310480246277148802)scryptess.me: <:remiliacry:1460538887154958488>
+(1310480246277148802)scryptess.me: STOPP ITTT
+(1310480246277148802)scryptess.me: hi
+(786431280848830504)wimpysimpyman5043: balls
+(1411486569386213376)iggalti: aaaa
+(1411486569386213376)iggalti: aaaaaaa
+(1411486569386213376)iggalti: aaaa
+(1310480246277148802)scryptess.me: 
+(1310480246277148802)scryptess.me: wtf
+(1310480246277148802)scryptess.me: okay now its okay
+(1310480246277148802)scryptess.me: hi
+(1310480246277148802)scryptess.me: hi
+(1310480246277148802)scryptess.me: <:WTF:1146206610914553998>
+(774401819484487701)valyyk: I’m just a bebeh
+(774401819484487701)valyyk: Born in 2020
+(774401819484487701)valyyk: I will lie about my age
+(786431280848830504)wimpysimpyman5043: Make sure you cant see shit
+(786431280848830504)wimpysimpyman5043: I stg val I will add 18- only channels
+(774401819484487701)valyyk: 18+ NSFW channel when
+(896168021725417572)nate_lumiere: Yeah
+(896168021725417572)nate_lumiere: Ohhhh
+(786431280848830504)wimpysimpyman5043: I should make regular iggabot chatting channel and freaky iggabot chatting channel
+(896168021725417572)nate_lumiere: Set the freaky meter to 100%
+(786431280848830504)wimpysimpyman5043: guys PLEASSSEEEEEE GIVE ME IDEAS FOR IGGABOT PLEASSSSEEEEEE
+(896168021725417572)nate_lumiere: Yeppppp
+(1310480246277148802)scryptess.me: PEAK?
+(896168021725417572)nate_lumiere: Um yeah…….
+(1211781489931452447)Wordle: Kheflon was playing
+(896168021725417572)nate_lumiere: Hmm let’s see
+(740400910949417070)shardyt: that one was pretty easy
+(1211781489931452447)Wordle: No Significant Harassment and 𝓛𝓾𝓶𝓲𝓮𝓻𝓮 were playing
+(786431280848830504)wimpysimpyman5043: 
+(786431280848830504)wimpysimpyman5043: 
+(786431280848830504)wimpysimpyman5043: 
+(1211781489931452447)Wordle: **Your group is on a 5 day streak!** 🔥 Here are yesterday's results:
+👑 4/6: <@896168021725417572> <@786431280848830504>
+6/6: <@740400910949417070>
+(1211781489931452447)Wordle: No Gay Interest \(NGI\) and No Significant Harassment were playing
+(774401819484487701)valyyk: https://tenor.com/view/warframe-yareli-yareli-prime-kawaii-ievan-polka-gif-4419214870700045536
+(1411486569386213376)iggalti: who let val on the nyquil
+(774401819484487701)valyyk: GUYS GUSY ITS EASTER HOLY SHIT WEE WOO WEE WOO WEE WOO
+(1365579726789541920)vinny_loves_food: it’s christmas
+(965075897063452712)pomsterooo: thers a rabit inthe garnden
+(968972544805834823)www.icecream: happy easter
+(1211781489931452447)Wordle: **Your group is on a 4 day streak!** 🔥 Here are yesterday's results:
+👑 3/6: <@1307918257520640111>
+4/6: @𝓛𝓾𝓶𝓲𝓮𝓻𝓮 <@786431280848830504>
+X/6: <@968972544805834823>
+(896168021725417572)nate_lumiere: (I’m straight btw)
+(896168021725417572)nate_lumiere: https://tenor.com/view/zarlie-zirk-gif-9277731991787754864
+(1310480246277148802)scryptess.me: Um sure
+(896168021725417572)nate_lumiere: 
+(896168021725417572)nate_lumiere: Yessss
+(1310480246277148802)scryptess.me: You want me to vouch for this?
+(896168021725417572)nate_lumiere: ^^^
+(896168021725417572)nate_lumiere: ^^^
+(1310480246277148802)scryptess.me: Huh 😭
+(896168021725417572)nate_lumiere: <@1310480246277148802> do you vouch for us?
+(1211781489931452447)Wordle: 𝓛𝓾𝓶𝓲𝓮𝓻𝓮 was playing
+(896168021725417572)nate_lumiere: <@740400910949417070> this could be us
+(1211781489931452447)Wordle: No Significant Harassment is playing
+(1211781489931452447)Wordle: Ducky and No Gay Interest \(NGI\) were playing
+(1211781489931452447)Wordle: **Your group is on a 3 day streak!** 🔥 Here are yesterday's results:
+👑 3/6: <@740400910949417070>
+4/6: <@1310480246277148802> @Erratic Pulse
+6/6: <@786431280848830504>
+(1307918257520640111)duckybananasforme: [kevin](https://media.discordapp.net/stickers/1357789626055790654.png?size=160&name=kevin&lossless=true)
+(896168021725417572)nate_lumiere: 
+(1307918257520640111)duckybananasforme: [yo chill](https://media.discordapp.net/stickers/1469074598631964765.png?size=160&name=yo+chill&lossless=true)
+(896168021725417572)nate_lumiere: 
+(896168021725417572)nate_lumiere: 
+(968972544805834823)www.icecream: https://cdn.discordapp.com/attachments/1424195992642650122/1430642270830333972/IMG_1591.gif
+(968972544805834823)www.icecream: then cahnged my answer
+(968972544805834823)www.icecream: i legeit had it but forgot the ending letter
+(896168021725417572)nate_lumiere: 😭
+(896168021725417572)nate_lumiere: What is thatttt
+(896168021725417572)nate_lumiere: Kheflonnnnn
+(896168021725417572)nate_lumiere: No I didn’t
+(1307918257520640111)duckybananasforme: do you know it
+(896168021725417572)nate_lumiere: Instead of the last one
+(896168021725417572)nate_lumiere: I wish I had the first letter
+(896168021725417572)nate_lumiere: My brainnnn
+(1307918257520640111)duckybananasforme: today wordle is easy
+(1211781489931452447)Wordle: Ducky and 2 others were playing
+(1211781489931452447)Wordle: Erratic Pulse was playing
+(1310480246277148802)scryptess.me: Pls dont play chess w me..
+(1310480246277148802)scryptess.me: 😹
+(1310480246277148802)scryptess.me: man delta stinks at wordle
+(968972544805834823)www.icecream: your a problem
+(968972544805834823)www.icecream: https://tenor.com/view/akakichi-no-eleven-bro-bad-news-i%27ve-got-bad-news-for-you-hand-on-shoulder-gif-4737126791591033318
+(896168021725417572)nate_lumiere: https://tenor.com/view/ch0colatchaud-burst-gif-21178804
+(896168021725417572)nate_lumiere: Ohhhh Yuji and Gojo
+(896168021725417572)nate_lumiere: But idk
+(896168021725417572)nate_lumiere: I should buy the background
+(896168021725417572)nate_lumiere: 
+(896168021725417572)nate_lumiere: Ehhhh
+(1310480246277148802)scryptess.me: <:thumbs_up:1451803991058026617>
+(1310480246277148802)scryptess.me: ok yeah ur good now
+(1310480246277148802)scryptess.me: click play multiplayer
+(1310480246277148802)scryptess.me: nop
+(1310480246277148802)scryptess.me: fnaf 6!
+(1310480246277148802)scryptess.me: and make it friends only
+(1310480246277148802)scryptess.me: i think
+(1310480246277148802)scryptess.me: i'll make a lobby
+(1310480246277148802)scryptess.me: ok so like
+(1310480246277148802)scryptess.me: oh
+(1310480246277148802)scryptess.me: no
+(1310480246277148802)scryptess.me: uhh
+(1310480246277148802)scryptess.me: sorryy
+(968972544805834823)www.icecream: join up
+(968972544805834823)www.icecream: <@1310480246277148802>
+(1310480246277148802)scryptess.me: i dont understand whats happening
+(1310480246277148802)scryptess.me: hi pretzel
+(1310480246277148802)scryptess.me: HI LUMI
+(1310480246277148802)scryptess.me: helloo
+(896168021725417572)nate_lumiere: 
+(1365579726789541920)vinny_loves_food: AWWW
+(1310480246277148802)scryptess.me: shes been my desktop background for a couple months
+(1310480246277148802)scryptess.me: <:teto_yay:1369232451590946887>
+(1310480246277148802)scryptess.me: my favorite is amo
+(451379187031343104)LunaBot 🌙: <:music:1079555063774728272> **Final Slaughter (Hoax Lms) and Lyrics (FNAF 2 song) // BITE BY NIGHT // Edit** added to the queue (`02:42`) - at position **2**
+(1365579726789541920)vinny_loves_food: yess
+(1365579726789541920)vinny_loves_food: https://tenor.com/view/cat-tapping-arm-cat-asking-for-pets-cat-tap-tapping-arm-cat-cat-tap-arm-gif-5435997040648294499
+(1310480246277148802)scryptess.me: i mighta crashed
+(1365579726789541920)vinny_loves_food: Haiiii
+(1310480246277148802)scryptess.me: hi pretzelll
+(1310480246277148802)scryptess.me: i should finish gachiakuta
+(1310480246277148802)scryptess.me: https://tenor.com/view/gachiakuta-riyo-riyo-reaper-thumbs-up-nice-happy-gif-10267151068010328759
+(1310480246277148802)scryptess.me: <@1365579726789541920> hii
+(1310480246277148802)scryptess.me: ryan_pricemf
+(1310480246277148802)scryptess.me: i sent it
+(1310480246277148802)scryptess.me: ur okk
+(1310480246277148802)scryptess.me: its a visual glitch
+(1310480246277148802)scryptess.me: why do you hate me
+(1310480246277148802)scryptess.me: 😭 😭
+(1310480246277148802)scryptess.me: Khef i already invited you
+(1310480246277148802)scryptess.me: <@786431280848830504> right delta
+(1310480246277148802)scryptess.me: from the future
+(1310480246277148802)scryptess.me: its you
+(1310480246277148802)scryptess.me: sorry man
+(1310480246277148802)scryptess.me: with expendablechud
+(1310480246277148802)scryptess.me: khef we are replacing you
+(1310480246277148802)scryptess.me: <:Yum:1239752199182225468>
+(1310480246277148802)scryptess.me: 10 w hole dollars
+(1310480246277148802)scryptess.me: three 9s, a 10 and an 11
+(1310480246277148802)scryptess.me: you had the BEST combinatio
+(1310480246277148802)scryptess.me: iggagi had a fucking crazy hand
+(1310480246277148802)scryptess.me: wtf
+(1310480246277148802)scryptess.me: so checking reveals one card
+(1310480246277148802)scryptess.me: to add to our combinations
+(1310480246277148802)scryptess.me: those 5 cards go to all of our hands right
+(1310480246277148802)scryptess.me: 5 CARDS GET REVEALED
+(1310480246277148802)scryptess.me: OKAY SO LIKE
+(1310480246277148802)scryptess.me: thats saying you dont wanna bet
+(1310480246277148802)scryptess.me: and the other one fold
+(1310480246277148802)scryptess.me: raise is obviously raising the bet
+(1310480246277148802)scryptess.me: you agree to the bet
+(1310480246277148802)scryptess.me: call is like
+(1310480246277148802)scryptess.me: its just combinations
+(1310480246277148802)scryptess.me: youll pick it up fast
+(1310480246277148802)scryptess.me: <@1411486569386213376> righttt
+(1310480246277148802)scryptess.me: we're playing poker
+(1310480246277148802)scryptess.me: yes
+(1310480246277148802)scryptess.me: HI BATIST
+(1310480246277148802)scryptess.me: bowwowow
+(1310480246277148802)scryptess.me: is that the eye of cthulu
+(1310480246277148802)scryptess.me: <a:hi:1226177440469090395>
+(1310480246277148802)scryptess.me: hi khef
+(786431280848830504)wimpysimpyman5043: 
+(1310480246277148802)scryptess.me: you wanna come?
+(1310480246277148802)scryptess.me: they got like eaten or something i dont really understand
+(1310480246277148802)scryptess.me: 4/5 of them are dead
+(1310480246277148802)scryptess.me: lethal company
+(1310480246277148802)scryptess.me: oh yeah um
+(1310480246277148802)scryptess.me: these guys are gay
+(509515418352877570)kujirashinu: <@1310480246277148802>
+(764004529233723392)bat_ist: My mic dead <@1411486569386213376>
+(1310480246277148802)scryptess.me: <a:hi:1226177440469090395>
+(1310480246277148802)scryptess.me: welcome
+(1310480246277148802)scryptess.me: <@764004529233723392>
+(1310480246277148802)scryptess.me: hi batist
+(965075897063452712)pomsterooo: k want a steak
+(965075897063452712)pomsterooo: by cyriak
+(965075897063452712)pomsterooo: moo
+(968972544805834823)www.icecream: give me song names
+(1310480246277148802)scryptess.me: hi
+(1310480246277148802)scryptess.me: in a bit
+(1310480246277148802)scryptess.me: <:Cool:697939156675985419>
+(774401819484487701)valyyk: Knew it
+(786431280848830504)wimpysimpyman5043: I could go to your homr
+(786431280848830504)wimpysimpyman5043: Its funny that I could totally just go find pictures of you at your house
+(786431280848830504)wimpysimpyman5043: 
+(1411486569386213376)iggalti: hey get my baby pictures out of quotebook
+(786431280848830504)wimpysimpyman5043: <@1411486569386213376>
+(786431280848830504)wimpysimpyman5043: He is a small Chinese baby
+(786431280848830504)wimpysimpyman5043: This is iggagi
+(786431280848830504)wimpysimpyman5043: 
+(1411486569386213376)iggalti: WHAT
+(786431280848830504)wimpysimpyman5043: 
+(786431280848830504)wimpysimpyman5043: Youre bisexual
+(786431280848830504)wimpysimpyman5043: Ya well guess what
+(1411486569386213376)iggalti: -Delta
+(1411486569386213376)iggalti: 
+(786431280848830504)wimpysimpyman5043: Me and igg talking ab native Americans
+*daps me up* "Colonize em" -iggagi
+(786431280848830504)wimpysimpyman5043: 
+(786431280848830504)wimpysimpyman5043: 
+(1310480246277148802)scryptess.me: "Wrong their, btw" (seconds later, instead of apologizing)
+(786431280848830504)wimpysimpyman5043: "Who up flicking their bean?" -Iggagi, completely unprompted
+(786431280848830504)wimpysimpyman5043: "We are all gay" -Iggagi
+(1411486569386213376)iggalti: 
+(1310480246277148802)scryptess.me: I appreciated this <:smug:1359675463831650427>
+(1310480246277148802)scryptess.me: -Delta the Dih to Khef the Kih <a:reimu_headshake:1038292522419630080>
+(1310480246277148802)scryptess.me: "Whats that one cuban guy who's genetically modified-"
+"Fidel Castro?!"
+(968972544805834823)www.icecream: Delta "I goon to minors"
+(774401819484487701)valyyk: “But it’s a vertical ladder!” -Iggagi
+(786431280848830504)wimpysimpyman5043: "I could suck the chrome off of a doorknob, I give the best head in arizona" -Me, to which iggagi promptly replied with "Proof?"
+(786431280848830504)wimpysimpyman5043: "I want a woman" *describes me*
+(764004529233723392)bat_ist: val's kind of woman
+(1411486569386213376)iggalti: 
+(786431280848830504)wimpysimpyman5043: you just dont know because you never sleep
+(786431280848830504)wimpysimpyman5043: iggagi theyre jacking you too
+(1411486569386213376)iggalti: "And thats my kink! The ghosts come out of it at 3 am and jerk me off!" Delta Dontavious Quingle
+(968972544805834823)www.icecream: *iggagi - "Did I just get pegged?"*
+(786431280848830504)wimpysimpyman5043: "put an alternator on my dih an I could power the country" -Delta Dontavious Quingle
+(1411486569386213376)iggalti: https://medal.tv/games/terraria/clips/mcwcrPkQZs1c04ixE?invite=cr-MSxhN2gsMjE0MTA3MDE4&v=62
+(786431280848830504)wimpysimpyman5043: "I'm freaky" -Iggagi
+(968972544805834823)www.icecream: *Shard "I'm planning. on touching children"*
+(968972544805834823)www.icecream: Iggagi- "That's because his snake is solid."
+(786431280848830504)wimpysimpyman5043: https://tenor.com/view/must%27ve-been-the-wind-wind-alr-bro-that-was-not-the-wind-windy-blue-emoji-meme-gif-13783649244884164410
+(786431280848830504)wimpysimpyman5043: "I love getting rammed in the butt" -Shidd
+(786431280848830504)wimpysimpyman5043: "Are you doubting my hardness?" -Iggagi
+(786431280848830504)wimpysimpyman5043: "Are you hard?" "Of course" -Me, aking Iggagi an interesting question
+(1411486569386213376)iggalti: "IM GONNA MASTURBATE RIGHT NOW IGG, KEEP TALKING."  -Delta
+(786431280848830504)wimpysimpyman5043: "THE JOKE IS HE’S BLACK
+HE’S A MONKEY" -GoGamer9
+(968972544805834823)www.icecream: *Iggagi- "im peeing everywhere"*
+(968972544805834823)www.icecream: *iggagi's most likely fantasy- "lets all sleep in the shower"*
+(786431280848830504)wimpysimpyman5043: "I didn't kill 6 million Jews just to be reincarnated and have to deal with this shithead" -Delta Dontavious Quingleberry LVIII
+(786431280848830504)wimpysimpyman5043: "Its time to rizz up doc" -Iggagi
+(1411486569386213376)iggalti: 
+(968972544805834823)www.icecream: *-khef "that's not how you pull huzz".
+-iggagi "that's how i pullled badist"*
+(786431280848830504)wimpysimpyman5043: "He wont touch me :(" -Iggagi
+(786431280848830504)wimpysimpyman5043: "ill send u the n word audio" -GoGamer9
+(786431280848830504)wimpysimpyman5043: you what
+(1411486569386213376)iggalti: “The world is my hole!!” -Iggagi
+(786431280848830504)wimpysimpyman5043: "Im gonna get arrested for tranny trafficking" -GoGamer9
+(786431280848830504)wimpysimpyman5043: "two tetos one cup?!" -GoGamer9
+(786431280848830504)wimpysimpyman5043: "astral projection testicles" -GoGamer9
+(786431280848830504)wimpysimpyman5043: "Skibidituah" -Iggagi
+(786431280848830504)wimpysimpyman5043: "I need to be kawaii hitler" -Homeless Hibana
+(786431280848830504)wimpysimpyman5043: "I was slurping on a lot of your dick, but you don't remember that; probably because of the roofies that i put in the Fanta" -Me, to Iggagi, remembering summercamp
+(968972544805834823)www.icecream: *Delta-"I'm going to Take a massive crap"
+
+Shard-"Can you do it on me?"*
+(968972544805834823)www.icecream: *iggagi-"No i dont want a skirt, I want thigh highs"*
+(740400910949417070)shardyt: I GOT A QUALITY FOUR, OKAY?
+(968972544805834823)www.icecream: *Shard-"I'm not gooning to the Isaac characters. just becuase their naked"
+[fucking noises] "okay maybe I. am"*
+(1411486569386213376)iggalti: "GUYS PLEASE DONT SPLOOGE EVERYWHERE IM IN THE BLAST RADIUS" - Delta
+(786431280848830504)wimpysimpyman5043: "I edged it~" -Iggagi
+(968972544805834823)www.icecream: *Iggagi, on the topic of a hostage situation- "that's pretty peak"*
+(786431280848830504)wimpysimpyman5043: "Im jorking it~" -Iggagi
+(968972544805834823)www.icecream: "I love my head being in the gutter." - Delta
+(1411486569386213376)iggalti: "I BE SLURPIN' NOODLES LIKE I BE SLURPIN' DICK" - Delta
+(764004529233723392)bat_ist: "Will you splishy-splash in the holy bath with me..." -Sherma
+(1411486569386213376)iggalti: 
+(740400910949417070)shardyt: "I talk with my butthole" -Iggagi
+(786431280848830504)wimpysimpyman5043: "I'll turn you into a girl with my magic faggot powers" -Me
+(786431280848830504)wimpysimpyman5043: "IM CANNONICALLY RACIST D:" -Iggagi
+(1411486569386213376)iggalti: "we gotta risk it for the cock" -Shardyt 2025
+(786431280848830504)wimpysimpyman5043: UNPROMPTED TOO BTW
+(786431280848830504)wimpysimpyman5043: "I would never let an immigrant steal my guns" -Iggagi
+(740400910949417070)shardyt: jamie peak
+(1411486569386213376)iggalti: 
+(786431280848830504)wimpysimpyman5043: "Touch my peepee" -Iggagi
+(786431280848830504)wimpysimpyman5043: "I hate gay people" -Iggagi
+(786431280848830504)wimpysimpyman5043: "I'm a femboy" -Iggagi
+(786431280848830504)wimpysimpyman5043: "pawesome" -Iggagi
+(786431280848830504)wimpysimpyman5043: "am i a furry baddie now" -Iggagi
+(968972544805834823)www.icecream: *"Why is the baby pooing its self?," -Iggiag what is wrong with you?*
+(786431280848830504)wimpysimpyman5043: "are you a furry baddie" -Iggagi
+(786431280848830504)wimpysimpyman5043: "It's hard~" -Iggagi
+(1411486569386213376)iggalti: 
+(1411486569386213376)iggalti: 
+(786431280848830504)wimpysimpyman5043: "Im gonna do things to you~ >:3" -Iggagi
+(786431280848830504)wimpysimpyman5043: "I wanna be a cutie.." -Iggagi
+(786431280848830504)wimpysimpyman5043: "Who is a furry besides me?" -Iggagi
+(786431280848830504)wimpysimpyman5043: "Iggagi has been licked... Its super effective!" -Iggagi
+(1411486569386213376)iggalti: I WAS QUOTING SOMETHING
+(786431280848830504)wimpysimpyman5043: Iggagi, to me: "hey girl on a scale of 1 to america, how free are you tonight?"
+(968972544805834823)www.icecream: *-Khef "Why is my doughnut crunchy?"*
+(786431280848830504)wimpysimpyman5043: "Hey I'm also mentally ill, we should hook up!" -Iggagi
+(1310480246277148802)scryptess.me: KHEF
+(1310480246277148802)scryptess.me: KHEEEEF
+(1310480246277148802)scryptess.me: ARE YOU AWAKE
+(1310480246277148802)scryptess.me: HELLOOOOOO
+(1310480246277148802)scryptess.me: https://tenor.com/view/nemo-tap-glass-hello-gif-15153530
+(1310480246277148802)scryptess.me: okay yeah hes goner
+(1310480246277148802)scryptess.me: <@764004529233723392> are you alive hellooo
+(1310480246277148802)scryptess.me: HEEELP
+(1310480246277148802)scryptess.me: HELLPP MEEE
+(1310480246277148802)scryptess.me: HELPPPPPP
+(1310480246277148802)scryptess.me: <@764004529233723392> im scared can you kill this woman
+(1310480246277148802)scryptess.me: <:remiliacry:1460538887154958488>
+(764004529233723392)bat_ist: why is delta playing that
+(764004529233723392)bat_ist: oh hell nah im out
+(1310480246277148802)scryptess.me: shes doing ACCENT
+(1310480246277148802)scryptess.me: ACCENTS
+(1310480246277148802)scryptess.me: why is the pilot a white girl
+(1310480246277148802)scryptess.me: 😭 😭
+(1310480246277148802)scryptess.me: WHY ARE YOU BEING ASSINATED
+(1310480246277148802)scryptess.me: assassinated*
+(1310480246277148802)scryptess.me: yes
+(1310480246277148802)scryptess.me: very intently
+(1310480246277148802)scryptess.me: where is the hot hitler furry
+(1310480246277148802)scryptess.me: delta made the hot furry nurse into a mexican gardner
+(1310480246277148802)scryptess.me: <:mokoustare:1467131423063281807>
+(1310480246277148802)scryptess.me: is this epstein island
+(1310480246277148802)scryptess.me: so delta switched from a mexican GARDNER to a beautiful russian woman
+(1310480246277148802)scryptess.me: <:mokoustare:1467131423063281807>
+(1310480246277148802)scryptess.me: FRENCH
+(1310480246277148802)scryptess.me: by her WHAT
+(1310480246277148802)scryptess.me: its real life
+(774401819484487701)valyyk: <@1411486569386213376>
+(896168021725417572)nate_lumiere: https://tenor.com/view/ash-baby-gif-5920695394641505768
+(1411486569386213376)iggalti: PEAKK
+(896168021725417572)nate_lumiere: There ain’t no way
+(896168021725417572)nate_lumiere: 🥀
+(1310480246277148802)scryptess.me: <@968972544805834823>
+(1310480246277148802)scryptess.me: the pressure dev team right
+(1310480246277148802)scryptess.me: more than half of them knew
+(1310480246277148802)scryptess.me: or had been participating in
+(1310480246277148802)scryptess.me: the rape of the games composer
+(740400910949417070)shardyt: They didn’t participate it was just zeal
+(1310480246277148802)scryptess.me: oh
+(740400910949417070)shardyt: But they knew about it I guess
+(1310480246277148802)scryptess.me: damn..
+(968972544805834823)www.icecream: Still I don’t know what’s happing
+(740400910949417070)shardyt: Zeal is a rapist and pressure is dead
+(1310480246277148802)scryptess.me: im sorry shard
+(1310480246277148802)scryptess.me: <a:AFoxy_pats:957118127706112000>
+(740400910949417070)shardyt: Be sorry for REN
+(1310480246277148802)scryptess.me: hi pretzel
+(1310480246277148802)scryptess.me: bye pretzel
+(1310480246277148802)scryptess.me: https://tenor.com/view/gachiakuta-riyo-riyo-blinking-anime-girl-riyo-confused-riyo-shocked-gif-14301435185751912389
+(1310480246277148802)scryptess.me: <@896168021725417572> u on siege
+(896168021725417572)nate_lumiere: I could be…..
+(896168021725417572)nate_lumiere: Lemme finish this Apex game rq
+(896168021725417572)nate_lumiere: Prolly like 15 mins
+(896168021725417572)nate_lumiere: Inv me when you’re redd as y
+(1310480246277148802)scryptess.me: oh
+(1310480246277148802)scryptess.me: <@786431280848830504>
+(1310480246277148802)scryptess.me: PAUSEEEEEEE
+(1310480246277148802)scryptess.me: lumiiiiii
+(1310480246277148802)scryptess.me: <@896168021725417572> is this you
+(896168021725417572)nate_lumiere: Uhhhh yeah
+(896168021725417572)nate_lumiere: ….
+(1310480246277148802)scryptess.me: <:Shock:1472357384025276587>
+(1310480246277148802)scryptess.me: ur whiter than i like imagined
+(896168021725417572)nate_lumiere: 
+(1310480246277148802)scryptess.me: i mean its like
+(1310480246277148802)scryptess.me: paper white ykwim
+(1310480246277148802)scryptess.me: like black and white
+(896168021725417572)nate_lumiere: Yall have seen me 🥀
+(896168021725417572)nate_lumiere: https://tenor.com/view/balright-bahlright-jynx-zi-jynx-gif-11107428969924259002
+(786431280848830504)wimpysimpyman5043: https://www.youtube.com/shorts/u3eMskTm-4M
+(896168021725417572)nate_lumiere: Grrrrrr
+(1310480246277148802)scryptess.me: <@1491185760928268390>
+(1310480246277148802)scryptess.me: what
+(1310480246277148802)scryptess.me: why am i dead
+(1310480246277148802)scryptess.me: <:remiliacry:1460538887154958488>
+(1310480246277148802)scryptess.me: 
+(1310480246277148802)scryptess.me: hello pretzel
+(1310480246277148802)scryptess.me: <a:hi:1226177440469090395>
+(1365579726789541920)vinny_loves_food: HALLO
+(1365579726789541920)vinny_loves_food: <a:hibro:1178361546125099099>
+(1310480246277148802)scryptess.me: i keep forgetting to finish gachiakuta
+(1310480246277148802)scryptess.me: <a:DieButSlow:1071610012796985465>
+(1310480246277148802)scryptess.me: khef we are in a RANKED MATCH
+(968972544805834823)www.icecream: Getting a new table
+(1307918257520640111)duckybananasforme: [yo chill](https://media.discordapp.net/stickers/1469074598631964765.png?size=160&name=yo+chill&lossless=true)
+(1310480246277148802)scryptess.me: wtf
+(1310480246277148802)scryptess.me: wise duck
+(764004529233723392)bat_ist: Is that a snowball?
+(1310480246277148802)scryptess.me: khef r u relaunching
+(1310480246277148802)scryptess.me: why did we quit
+(1307918257520640111)duckybananasforme: [yo chill](https://media.discordapp.net/stickers/1469074598631964765.png?size=160&name=yo+chill&lossless=true)
+(1307918257520640111)duckybananasforme: yes
+(786431280848830504)wimpysimpyman5043: Bro wtf is wrong with Norwegian porn
+(786431280848830504)wimpysimpyman5043: They just wash their hands n shit for like 3 minutes
+(1310480246277148802)scryptess.me: yeah ima do some more
+(1310480246277148802)scryptess.me: that was fun
+(1310480246277148802)scryptess.me: and i wanna learn
+(1310480246277148802)scryptess.me: yeah
+(1310480246277148802)scryptess.me: sure
+(1310480246277148802)scryptess.me: uhh
+(1310480246277148802)scryptess.me: this is vanilla
+(1310480246277148802)scryptess.me: is that okay or
+(1310480246277148802)scryptess.me: i wanna learn how to do all the things
+(1310480246277148802)scryptess.me: what the HECK is blessing my ears
+(1310480246277148802)scryptess.me: why is it rapping
+(1310480246277148802)scryptess.me: batist is this normal
+(1310480246277148802)scryptess.me: oh
+(1310480246277148802)scryptess.me: 1 second
+(1310480246277148802)scryptess.me: so the game fucking hates me
+(1310480246277148802)scryptess.me: i say we spam soundboards
+(1310480246277148802)scryptess.me: throw this guys ranked match
+(1310480246277148802)scryptess.me: are you reeeeeally fine
+(1310480246277148802)scryptess.me: trauma dump vc night two trust
+(1310480246277148802)scryptess.me: i dont wanna type it all out againnnn
+(1310480246277148802)scryptess.me: but i can
+(1310480246277148802)scryptess.me: lmfao
+(1310480246277148802)scryptess.me: all of my life problems
+(1310480246277148802)scryptess.me: including the SPIDER that just ate me
+(1310480246277148802)scryptess.me: LMFAOOO
+(1310480246277148802)scryptess.me: yes!~
+(1310480246277148802)scryptess.me: 
+(1310480246277148802)scryptess.me: beans are scary man
+(1310480246277148802)scryptess.me: mexicans scare me
+(1310480246277148802)scryptess.me: wait this outfit is kind of TUFF
+(1310480246277148802)scryptess.me: am i brave
+(1310480246277148802)scryptess.me: <:Thinkachi_Rei:1332759117676413019>
+(1310480246277148802)scryptess.me: https://tenor.com/view/vocaloid-adachi-rei-utau-exploding-bald-gif-9207443201607052546
+(1310480246277148802)scryptess.me: im bald actually
+(1310480246277148802)scryptess.me: if i go bald
+(1310480246277148802)scryptess.me: i want one strand of hair
+(1310480246277148802)scryptess.me: LMFAOOO
+(1310480246277148802)scryptess.me: true
+(1310480246277148802)scryptess.me: https://www.roblox.com/users/156889694/profile
+(1310480246277148802)scryptess.me: Wordle 1755 4/6
+
+⬜⬜⬜🟨🟨
+⬜⬜⬜⬜⬜
+🟩🟩🟨🟩🟨
+🟩🟩🟩🟩🟩
+(1310480246277148802)scryptess.me: not bad
+(1310480246277148802)scryptess.me: yeah
+(1310480246277148802)scryptess.me: i always use the same first two words
+(1310480246277148802)scryptess.me: so i got it in two
+(1310480246277148802)scryptess.me: two real guesses
+(896168021725417572)nate_lumiere: Maybe don’t watch it <:emoji_40:1450180636668330115>
+(896168021725417572)nate_lumiere: https://www.roblox.com/share?code=5f647e8f84f03747852adec902ef710a&type=Profile&source=ProfileShare&stamp=1775743125452
+(896168021725417572)nate_lumiere: Peak avatar
+(1365579726789541920)vinny_loves_food: https://tenor.com/view/cat-tapping-arm-cat-asking-for-pets-cat-tap-tapping-arm-cat-cat-tap-arm-gif-5435997040648294499
+(1310480246277148802)scryptess.me: Its the meta
+(1310480246277148802)scryptess.me: Sorry man
+(1310480246277148802)scryptess.me: Kinda have to if you wanna hit plat on ranked gooning
+(896168021725417572)nate_lumiere: 
+(740400910949417070)shardyt: thats a yeti mic im pretty sure
+(740400910949417070)shardyt: not sure which model tho
+(740400910949417070)shardyt: oh yeah its literally called a blue yeti snowball
+(740400910949417070)shardyt: what are ur starting words
+(740400910949417070)shardyt: i use audio and meths
+(740400910949417070)shardyt: 
+(740400910949417070)shardyt: <@&1313011068225982485>
+(869319720132825109).slinkee: https://tenor.com/view/everybody-hates-chris-i-have-planted-a-bomb-gif-1022230152129699203
+(740400910949417070)shardyt: gaqy
+(740400910949417070)shardyt: gayu
+(740400910949417070)shardyt: gay
+(740400910949417070)shardyt: thats you
+(1310480246277148802)scryptess.me: is this like
+(1310480246277148802)scryptess.me: the winter soldier code
+(1310480246277148802)scryptess.me: who is steven
+(1310480246277148802)scryptess.me: hi valyyk
+(1310480246277148802)scryptess.me: switch off orokin
+(1310480246277148802)scryptess.me: see what happens
+(1310480246277148802)scryptess.me: 😼

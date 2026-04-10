@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
@@ -64,18 +66,16 @@ public class Interactions extends ListenerAdapter {
 
 	//Whether the iggaAI chatting is enabled
 	public static boolean CHAT_ENABLED = false;
-	//Server Logger
-	BufferedWriter ServerLogs = create(Main.PATH + "/Logs/Output/ServerLogs.txt");
 	//Admin commands list
 	String ADMIN_COMMAND_HELP = "Admin commands:\n" +
 			"i!help <- Displays this list\n" +
 			"i!chat true/false <- Enables/Disables Iggabot Chatting in  #¡-✧┊iggabot\n" +
-			"i!molest <- spams the user with balls\n" + 
-			"i!activity tru/false <- Enables/Disables Iggabot Activities\n";//not implemented yet
-	/*" +
+			"i!molest @user <- spams the user with balls\n" + 
+			"i!activity true/false <- Enables/Disables Iggabot Activities\n"/*not implemented yet
+	"i!" +
 	"i! <- \n" +
 	"i! <- \n" +
-	"i! <- \n"*/ 
+	"i! <- \n"*/;
 
 	//The logic that happens whenever a message is sent
 	@Override
@@ -83,22 +83,21 @@ public class Interactions extends ListenerAdapter {
 		if(event.getAuthor().isBot()) {return;}
 		//Logs
 		if(exclude(event)) {
-			try {
-				ServerLogs.write(event.getAuthor().getEffectiveName() + ": " + event.getMessage().getContentDisplay() + "\n");
-				ServerLogs.flush();
-			} catch (IOException e) {e.printStackTrace();}
+			log("(" + event.getMessage().getAuthor().getId() + ")" + event.getMessage().getAuthor().getName() + ": " + event.getMessage().getContentRaw());
 		}
 		//Admin Commands
 		if(event.getMessage().getContentRaw().startsWith("i!")) {
 			if(isAdmin(event)) {
 				event.getMessage().delete().queue();
 				String str = event.getMessage().getContentRaw().substring(2);
+				
 				//Sends all the commands to the person who asked
 				if(str.equals("help")) {
 					Main.bot.openPrivateChannelById(event.getMessage().getAuthor().getId())
 					.flatMap(e->e.sendMessage(ADMIN_COMMAND_HELP))
 					.queue();				
 				}
+				
 				//Enables iggabot chatting channel
 				if(str.equals("chat")) {
 					if(str.substring(5).toLowerCase().contains("true")) {
@@ -111,6 +110,7 @@ public class Interactions extends ListenerAdapter {
 						System.out.println("Iggabot chatting disabled!");
 					}
 				}
+				
 				//Sends a lot of balls to the user
 				if(str.substring(0,6).equals("molest")) {
 					str = str.replace("<", "").replace(">", "").replace("@", "");
@@ -129,27 +129,42 @@ public class Interactions extends ListenerAdapter {
 		if(CHAT_ENABLED&&event.getChannel().getId().equals(Main.IGGABOT_CHANNEL)) {
 			String str = igg.chat(event.getMessage().getContentDisplay());
 			if(str.toLowerCase().contains("nigga")||str.toLowerCase().contains("nigger")) {
-				str = "Bot said the N Word, this is bad and is currently being removed.";
+				str = "Bot said the N Word. This is not intended and will be reviewed.";
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
+		for(int i = 0; i<15; i++) {
+			System.out.println("\"" + i + ". \" +\n");
+		}
 	}
 
+	//Logs the message into the ServerLogs file
+	private void log(String str) {
+		try(FileWriter w = new FileWriter(Main.PATH + "/Logs/Output/ServerLogs.txt",true)) {
+			w.write(str + "\n");
+		} catch (Exception e) {e.printStackTrace();}
+	}
+
+	/*  NOT IMPLEMENTED FOR NOW, NEEDS RULES AND GOODBYE MESSAGE
 	//On joining the server sends a list of the rules to whomever joined
 	private static final String RULES = 
-			"fghjfghjfghjfghjgjh" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"";
+			"Welcome to Iggacorp!\n" +
+			"Be sure to follow the rules:" +
+			"1. " +
+			"2. " +
+			"3. " +
+			"4. " +
+			"5. " +
+			"6. " +
+			"7. " +
+			"8. " +
+			"9. " +
+			"10. " +
+			"11. " +
+			"12. " +
+			"13. " +
+			"14. " +
+			"15. ";
 	@Override
 	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
 		String id = event.getMember().getUser().getId();
@@ -178,19 +193,13 @@ public class Interactions extends ListenerAdapter {
 		PrivateChannel pc = Main.bot.openPrivateChannelById(id).complete();
 		pc.sendMessage(LEAVE_MESSAGE).queue();
 	}
+	 */
+
 	//Just a protection against long code :p
 	private boolean isAdmin(MessageReceivedEvent event) {
 		return (event.getMember().getRoles().contains(event.getGuild().getRolesByName("Admin", true).get(0)) || event.getMember().getRoles().contains(event.getGuild().getRolesByName("IT Tech", true).get(0)));
 	}
 
-	//A way to get around the error
-	private BufferedWriter create(String string) {
-		BufferedWriter i = null;
-		try {
-			i = new BufferedWriter(new FileWriter(new File(string)));
-		} catch (Exception e) {e.printStackTrace();}
-		return i;
-	}
 	//All of the channels that wont be logged, like logs or boombox
 	private boolean exclude(MessageReceivedEvent event) {
 		boolean b = true;
