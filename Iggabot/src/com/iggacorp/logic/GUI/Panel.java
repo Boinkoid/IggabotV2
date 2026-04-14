@@ -129,7 +129,7 @@ public class Panel extends JPanel {
 							}
 							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
-							GUI.frame.setName("Iggabot           " + pageNum+1);
+							GUI.frame.setTitle(GUI.IGGABOT_MESSAGE  + (pageNum+1));
 						}
 						case "Previous page" -> {
 							int guh = --pageNum;
@@ -138,7 +138,7 @@ public class Panel extends JPanel {
 							}
 							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
-							GUI.frame.setName("Iggabot           " + pageNum+1);
+							GUI.frame.setTitle(GUI.IGGABOT_MESSAGE + (pageNum+1));
 						}
 						case "Delete channel" ->{
 							Category cat = Main.getIggabotChannelCategory();

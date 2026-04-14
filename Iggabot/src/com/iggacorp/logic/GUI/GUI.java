@@ -23,22 +23,25 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 public class GUI {
 	private static final Path PATH = Main.PATH;
+	public static final String IGGABOT_MESSAGE = "Iggabot                                    Page ";
+	private static final String START_MESSAGE = "";
 	//Main EDT
 	public static void main(String[] args) throws Exception {
-		SpringApplication.run(Site.class, args);//Figure out how to make it so it doesnt print to System.out
+		//SpringApplication.run(Site.class, args);//Figure out how to make it so it doesnt print to System.out
 		new GUI();
 		new Main();
 		loadLogs();
 		while(Main.IGGABOT_CHANNEL==null) {}//do nothing, just waits till the channel var initializes otherwise it causes huge issues
 		clearConsole();
 		frame.setVisible(true);
+		System.out.println(START_MESSAGE);
 	}
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {
 		frame = new JFrame();
 		frame.add(new Panel());
-		frame.setName("Iggabot           " + Panel.pageNum);
+		frame.setTitle(IGGABOT_MESSAGE + (Panel.pageNum+1));
 		frame.setIconImage(ImageIO.read(new File(PATH + "/Images/Teto.jpg")));
 		frame.setSize(847,602);
 		frame.setLocationRelativeTo(null);
