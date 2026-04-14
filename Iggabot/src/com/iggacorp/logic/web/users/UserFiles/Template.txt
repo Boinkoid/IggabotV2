@@ -6,7 +6,6 @@ blackjack:0
 slots:0
 roulette:0
 texasholdem:0
-/esc/
 totalWins:0
 totalLosses:0
 poker:0
