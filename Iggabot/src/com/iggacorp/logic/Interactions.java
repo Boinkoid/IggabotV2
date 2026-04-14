@@ -2,8 +2,14 @@ package com.iggacorp.logic;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+
+import com.iggacorp.logic.web.Site;
+import com.iggacorp.logic.web.users.UserFiler;
+
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -25,6 +31,8 @@ public class Interactions extends ListenerAdapter {
 				.addOption(OptionType.STRING, "idea", "Please give me your ideas, im desperate T-T", true),
 				Commands.slash("swear","Displays the swear count")
 				.addOption(OptionType.USER, "user", "Shows the amount of time the user has sworn")
+				//Add in leaderboard and coinflip commands
+				
 				).queue();
 	}
 
@@ -110,6 +118,9 @@ public class Interactions extends ListenerAdapter {
 					}
 					channel.sendMessage(tmp).queue();
 				}
+				if(str.substring(0,8).equals("activity")) {
+					Site.toggle();
+				}
 			} else {
 				event.getMessage().reply("You don't have admin permissions!").queue();
 			}
@@ -134,55 +145,15 @@ public class Interactions extends ListenerAdapter {
 		} catch (Exception e) {e.printStackTrace();}
 	}
 
-	/*  NOT IMPLEMENTED FOR NOW, NEEDS RULES AND GOODBYE MESSAGE
-	//On joining the server sends a list of the rules to whomever joined
-	private static final String RULES = 
-			"Welcome to Iggacorp!\n" +
-			"Be sure to follow the rules:" +
-			"1. " +
-			"2. " +
-			"3. " +
-			"4. " +
-			"5. " +
-			"6. " +
-			"7. " +
-			"8. " +
-			"9. " +
-			"10. " +
-			"11. " +
-			"12. " +
-			"13. " +
-			"14. " +
-			"15. ";
+	//NOT IMPLEMENTED FOR NOW, NEEDS RULES AND GOODBYE MESSAGE
 	@Override
 	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-		String id = event.getMember().getUser().getId();
-		PrivateChannel pc = Main.bot.openPrivateChannelById(id).complete();
-		pc.sendMessage(RULES).queue();
+		UserFiler.createUserFile(event.getUser().getId());
 	}
-
-	//On leaving the server, iggabot will do something idk bro idk what to do here
-	private static final String LEAVE_MESSAGE = 
-			"Currently iggabot is in development so we dont exactly have a goodbye message\n" +
-			"So... Byeeee :3" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"" +
-			"";
 	@Override
 	public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
-		String id = event.getMember().getUser().getId();
-		PrivateChannel pc = Main.bot.openPrivateChannelById(id).complete();
-		pc.sendMessage(LEAVE_MESSAGE).queue();
+		UserFiler.deleteFile(event.getUser().getId());
 	}
-	 */
 
 	//Just a protection against long code :p
 	private boolean isAdmin(MessageReceivedEvent event) {

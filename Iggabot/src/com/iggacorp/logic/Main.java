@@ -28,7 +28,7 @@ public class Main {
 	public static String IGGABOT_CHANNEL;
 	public static JDA bot;
 	public static Guild guild;
-
+	public static Channel general;
 
 	//Random bullshit GO!!
 	public Main() throws Exception {
@@ -38,6 +38,7 @@ public class Main {
 		bot.awaitReady();
 		IGGABOT_CHANNEL = getIggabotChannel();
 		guild = bot.getGuildById(IGGACORP);
+		general = guild.getChannelById(TextChannel.class, 0);
 	}
 	//Returns all the text channels
 	public static void getTextChannels(){

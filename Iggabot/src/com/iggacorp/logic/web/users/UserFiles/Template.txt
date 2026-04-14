@@ -1,0 +1,16 @@
+iggacoin:1000
+totalWon:0
+totalLoss:0
+poker:0
+blackjack:0
+slots:0
+roulette:0
+texasholdem:0
+/esc/
+totalWins:0
+totalLosses:0
+poker:0
+blackjack:0
+slots:0
+roulette:0
+texasholdem:0
