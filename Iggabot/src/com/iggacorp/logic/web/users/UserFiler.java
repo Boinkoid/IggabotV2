@@ -185,8 +185,42 @@ public class UserFiler{
 			}
 		}
 	}
-
-
+	//Adds i to the current value of val
+	public static void addToValue(String val, int i, String id) {
+		for(File f : ALL_FILES.listFiles()) {
+			if(f.getName().equals(id)) {
+				try(BufferedWriter w = new BufferedWriter(new FileWriter(f))){
+					String str = "";
+					for(String b : Files.readAllLines(f.toPath())) {
+						if(b.split(":")[0].equals(val)) {
+							str += b.split(":")[0] + ":" + (i + getValue(val,id)) + "\n";
+						} else {
+							str += b + "\n";
+						}
+					}
+					w.write(str);
+				} catch(Exception e) {e.printStackTrace();}
+			}
+		}
+	}
+	//Subtracts i from the current value of val
+	public static void subtractFromValue(String val, int i, String id) {
+		for(File f : ALL_FILES.listFiles()) {
+			if(f.getName().equals(id)) {
+				try(BufferedWriter w = new BufferedWriter(new FileWriter(f))){
+					String str = "";
+					for(String b : Files.readAllLines(f.toPath())) {
+						if(b.split(":")[0].equals(val)) {
+							str += b.split(":")[0] + ":" + (getValue(val,id)-i) + "\n";
+						} else {
+							str += b + "\n";
+						}
+					}
+					w.write(str);
+				} catch(Exception e) {e.printStackTrace();}
+			}
+		}
+	}
 
 
 
