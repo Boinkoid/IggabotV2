@@ -22,7 +22,6 @@ import net.dv8tion.jda.api.entities.User;
 public class UserFiler{
 
 	public static final Path PATH_TO_WEB = Path.of(Paths.get("").toAbsolutePath() + "/src/com/iggacorp/logic/web/");
-	public static final Path PATH_TO_PAGES = Path.of(PATH_TO_WEB + "/pages");
 	private static final Path PATH_TO_USER_FILES = Path.of(PATH_TO_WEB + "/users/UserFiles");
 	private static final File ALL_FILES = new File(PATH_TO_USER_FILES + "");
 
@@ -239,7 +238,4 @@ public class UserFiler{
 			}
 		}
 	}
-
-
-
 }

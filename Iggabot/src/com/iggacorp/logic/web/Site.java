@@ -25,19 +25,7 @@ public class Site {
 
 	@GetMapping
 	public String home() {
-		return """
-				    <html>
-				        <body style="text-align:center; font-family:sans-serif;">
-				            <h1>🎰 Iggacorp Casino</h1>
-
-				            <a href="/discord/play/blackjack">Blackjack</a><br>
-				            <a href="/discord/play/poker">Poker</a><br>
-				            <a href="/discord/play/slots">Slots</a><br>
-				            <a href="/discord/play/roulette">Roulette</a><br>
-				            <a href="/discord/play/texasholdem">Texas Hold'em</a>
-				        </body>
-				    </html>
-				""";
+		return "home.html";
 	}
 }
 
