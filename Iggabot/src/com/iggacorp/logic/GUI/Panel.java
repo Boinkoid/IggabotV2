@@ -86,7 +86,7 @@ public class Panel extends JPanel {
 		GUI.frame.repaint();
 	}
 	//Button logic for the panel
-	private static int pageNum = 0;
+	public static int pageNum = 0;
 	private void makeButtons() {
 		for(String[][] page : BUTTON_PAGES) {
 			JButton[][] temp = new JButton[3][3];
@@ -129,6 +129,7 @@ public class Panel extends JPanel {
 							}
 							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
+							GUI.frame.setName("Iggabot           " + pageNum+1);
 						}
 						case "Previous page" -> {
 							int guh = --pageNum;
@@ -137,6 +138,7 @@ public class Panel extends JPanel {
 							}
 							pageNum=guh;
 							makeButtonPanel(BUTTON_LIST.get(guh));
+							GUI.frame.setName("Iggabot           " + pageNum+1);
 						}
 						case "Delete channel" ->{
 							Category cat = Main.getIggabotChannelCategory();

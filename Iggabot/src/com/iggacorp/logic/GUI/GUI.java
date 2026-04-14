@@ -13,13 +13,19 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
+import org.springframework.boot.SpringApplication;
+
 import com.iggacorp.logic.Main;
+import com.iggacorp.logic.web.Site;
+
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 public class GUI {
 	private static final Path PATH = Main.PATH;
 	//Main EDT
 	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Site.class, args);//Figure out how to make it so it doesnt print to System.out
 		new GUI();
 		new Main();
 		loadLogs();
@@ -30,12 +36,13 @@ public class GUI {
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {
-		frame = new JFrame("Iggabot");
+		frame = new JFrame();
+		frame.add(new Panel());
+		frame.setName("Iggabot           " + Panel.pageNum);
 		frame.setIconImage(ImageIO.read(new File(PATH + "/Images/Teto.jpg")));
 		frame.setSize(847,602);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new Panel());
 		frame.setResizable(false);
 	}
 	//Loads the ouput logs

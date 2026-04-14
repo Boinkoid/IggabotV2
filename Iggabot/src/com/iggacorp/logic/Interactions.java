@@ -1,17 +1,9 @@
 package com.iggacorp.logic;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
-import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -71,7 +63,7 @@ public class Interactions extends ListenerAdapter {
 			"i!help <- Displays this list\n" +
 			"i!chat true/false <- Enables/Disables Iggabot Chatting in  #¡-✧┊iggabot\n" +
 			"i!molest @user <- spams the user with balls\n" + 
-			"i!activity true/false <- Enables/Disables Iggabot Activities\n"/*not implemented yet
+			"i!activity true/false <- Enables/Disables Iggabot Activities\n *IN DEVELOPMENT*"/*not implemented yet
 	"i!" +
 	"i! <- \n" +
 	"i! <- \n" +
