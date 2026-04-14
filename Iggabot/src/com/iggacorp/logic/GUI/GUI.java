@@ -32,11 +32,10 @@ public class GUI {
 		new UserFiler();
 		new GUI();
 		new Main();
-		loadLogs();
+		GUI.loadLogs();
 		while(Main.IGGABOT_CHANNEL==null) {}//do nothing, just waits till the channel var initializes otherwise it causes huge issues
-		clearConsole();
-		frame.setVisible(true);
-		System.out.println(START_MESSAGE);
+		GUI.clearConsole();
+		GUI.frame.setVisible(true);
 	}
 	//Makes frame
 	public static JFrame frame;
@@ -75,7 +74,7 @@ public class GUI {
 			errLog.flush();
 		}
 	};
-	private static void loadLogs() {
+	public static void loadLogs() {
 		try(FileWriter w = new FileWriter(Main.PATH + "/Logs/Output/ServerLogs.txt")) {
 			ArrayList<List<Message>> guh = new ArrayList<>();
 			for(TextChannel i : Main.bot.getTextChannels()) {
