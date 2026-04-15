@@ -119,7 +119,13 @@ public class Interactions extends ListenerAdapter {
 					channel.sendMessage(tmp).queue();
 				}
 				if(str.substring(0,8).equals("activity")) {
-					Site.toggle();
+					String buhhh = "UNIMPLEMENTED";
+					/*if(Site.toggle()) {
+						buhhh = "enabled";
+					}  else {
+						buhhh = "disabled";
+					}*/
+					event.getMessage().reply("Activities are " + buhhh).queue();
 				}
 			} else {
 				event.getMessage().reply("You don't have admin permissions!").queue();
@@ -145,11 +151,11 @@ public class Interactions extends ListenerAdapter {
 	//NOT IMPLEMENTED FOR NOW, NEEDS RULES AND GOODBYE MESSAGE
 	@Override
 	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-		UserFiler.createUserFile(event.getUser().getId());
+		//UserFiler.createUserFile(event.getUser().getId());
 	}
 	@Override
 	public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
-		UserFiler.deleteFile(event.getUser().getId());
+		//UserFiler.deleteFile(event.getUser().getId());
 	}
 
 	//Just a protection against long code :p

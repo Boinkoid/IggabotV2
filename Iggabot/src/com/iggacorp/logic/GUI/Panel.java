@@ -3,31 +3,19 @@ package com.iggacorp.logic.GUI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.AbstractAction;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.KeyStroke;
 
 import com.iggacorp.logic.Interactions;
 import com.iggacorp.logic.Main;
-import com.iggacorp.logic.web.Site;
-import com.iggacorp.logic.web.users.UserFiler;
 
 import net.dv8tion.jda.api.entities.channel.concrete.Category;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -150,15 +138,15 @@ public class Panel extends JPanel {
 						}
 						//Page 2
 						case "Get Text Channels" -> Main.getTextChannels();
-						case "New Game" -> UserFiler.newGame();
-						case "Activities" -> Site.toggle();
+						case "Activities" -> {}//Site.toggle(); toggles the activities I/O
+						case "New Game" -> {}//makes a new gambling game
 						//Page 3
 						case "Reset Users" -> {
 							if(confirmation()) {
-								UserFiler.resetAllUserFiles();
+								//Resets the user files
 							}
 						}
-						case "Bypass" -> UserFiler.bypass = !UserFiler.bypass;
+						case "Bypass" -> {} //Bypasses the @everyone message
 						//Default
 						case "Next page" -> {
 							int guh = ++pageNum;
