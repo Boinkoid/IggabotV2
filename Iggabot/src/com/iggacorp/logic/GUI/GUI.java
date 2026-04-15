@@ -25,18 +25,6 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 public class GUI {
 	private static final Path PATH = Main.PATH;
 	public static final String IGGABOT_MESSAGE = "Iggabot                                    Page: ";
-	private static final String START_MESSAGE = "";
-	//Main EDT
-	public static void main(String[] args) throws Exception {
-		//SpringApplication.run(Site.class, args);//Figure out how to make it so it doesnt print to System.out
-		new UserFiler();
-		new GUI();
-		new Main();
-		GUI.loadLogs();
-		while(Main.IGGABOT_CHANNEL==null) {}//do nothing, just waits till the channel var initializes otherwise it causes huge issues
-		GUI.clearConsole();
-		GUI.frame.setVisible(true);
-	}
 	//Makes frame
 	public static JFrame frame;
 	public GUI() throws Exception {

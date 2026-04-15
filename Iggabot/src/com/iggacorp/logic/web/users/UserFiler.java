@@ -24,25 +24,16 @@ public class UserFiler{
 	public static final Path PATH_TO_WEB = Path.of(Paths.get("").toAbsolutePath() + "/src/com/iggacorp/logic/web/");
 	private static final Path PATH_TO_USER_FILES = Path.of(PATH_TO_WEB + "/users/UserFiles");
 	private static final File ALL_FILES = new File(PATH_TO_USER_FILES + "");
-
+	private static final List<Member> MEMBERS = Main.guild.loadMembers().get();
 
 
 	//The alphabetical order of the games included in the activities
 	public static String[] GAMES = getGames();
 	public UserFiler() {
-		for(Member i : Main.guild.getMembers()) {
+		for(Member i : MEMBERS) {
 			File f = new File(PATH_TO_USER_FILES + "/" + i.getId() + ".txt");
 			if(!f.exists()) {
 				createUserFile(i.getId());
-			}
-		}
-		for(File f : ALL_FILES.listFiles()) {
-			boolean b = false;
-			for(Member i : Main.guild.getMembers()) {
-				b = !i.getId().equals(f.getName());
-			}
-			if(b) {
-				deleteFile(f.getName());
 			}
 		}
 	}
@@ -56,9 +47,6 @@ public class UserFiler{
 				arr[j] = list.get(j);
 			}
 		} catch (Exception e) {e.printStackTrace();}
-		Arrays.sort(arr,String.CASE_INSENSITIVE_ORDER);
-		for(String i : arr)
-			saveToGameFile(i);
 		return arr;
 	}
 	public static void newGame() {
@@ -112,14 +100,14 @@ public class UserFiler{
 	//User logic
 	//Creates the user file with default stats
 	public static void createUserFile(String string) {
-		File f = new File(PATH_TO_USER_FILES + string);
+		File f = new File(PATH_TO_USER_FILES + "/" + string + ".txt");
 		if(f.exists()) {
 			f.delete();
 		}
 		try(BufferedWriter w = new BufferedWriter(new FileWriter(f))) {
 			f.createNewFile();
 			String str = "";
-			for(String t : Files.readAllLines(Path.of(PATH_TO_USER_FILES + "/Template.txt"))) {
+			for(String t : Files.readAllLines(Path.of(PATH_TO_WEB + "/users/Template.txt"))) {
 				str += t + "\n";
 			}
 			w.write(str);
@@ -140,7 +128,7 @@ public class UserFiler{
 			Main.bot.getTextChannelById(Main.general.getId()).sendMessage("@everyone Iggacoin has been reset, I appologize to those affected but it had to be done.").queue();
 		}
 		for(File f : ALL_FILES.listFiles()) {
-			createUserFile(f.getName());
+			createUserFile(f.getName().replace(".txt", ""));
 		}
 	}
 	public static File getUserFile(User u) {

@@ -133,9 +133,6 @@ public class Interactions extends ListenerAdapter {
 			}
 			event.getChannel().sendMessage(str).queue();
 		}
-		for(int i = 0; i<15; i++) {
-			System.out.println("\"" + i + ". \" +\n");
-		}
 	}
 
 	//Logs the message into the ServerLogs file
