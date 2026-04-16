@@ -3,9 +3,6 @@ package com.iggacorp.logic;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-import com.iggacorp.logic.web.Site;
-import com.iggacorp.logic.web.users.UserFiler;
-
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;

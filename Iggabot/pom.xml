@@ -9,20 +9,6 @@
 
 	<dependencies>
 
-		<!-- Spring Boot Web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>3.3.0</version>
-		</dependency>
-
-		<!-- Spring Boot Core -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<version>3.3.0</version>
-		</dependency>
-
 		<!-- Discord API -->
 		<dependency>
 			<groupId>net.dv8tion</groupId>
@@ -51,14 +37,7 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
-
-			<!-- Spring Boot plugin -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.3.0</version>
-			</plugin>
-
+		
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
