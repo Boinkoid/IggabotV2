@@ -14,8 +14,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import com.iggacorp.logic.Interactions;
 import com.iggacorp.logic.Main;
+import com.iggacorp.logic.commands.AICommands;
+import com.iggacorp.logic.commands.SlashCommands;
 
 import net.dv8tion.jda.api.entities.channel.concrete.Category;
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
@@ -95,8 +96,8 @@ public class Panel extends JPanel {
 						switch(e.getActionCommand()) {
 						case "Clear Console" -> GUI.clearConsole();
 						case "Chat" ->{
-							Interactions.CHAT_ENABLED=!Interactions.CHAT_ENABLED;
-							if(Interactions.CHAT_ENABLED) {
+							AICommands.CHAT_ENABLED=!AICommands.CHAT_ENABLED;
+							if(AICommands.CHAT_ENABLED) {
 								Main.bot.getChannelById(TextChannel.class,Main.IGGABOT_CHANNEL).sendMessage("Iggabot chatting enabled!").queue();
 								System.out.println("Iggabot chatting enabled!");
 							} else {
@@ -180,6 +181,7 @@ public class Panel extends JPanel {
 	private void toggle() {
 		
 	}
+	//Confirms is operator wants to reset iggacoin
 	private boolean confirmation() {
 		int t = 0;
 		int response = JOptionPane.showConfirmDialog(null, "Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION);

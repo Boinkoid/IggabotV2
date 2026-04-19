@@ -10,6 +10,12 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+import com.iggacorp.logic.commands.AICommands;
+import com.iggacorp.logic.commands.AdminCommands;
+import com.iggacorp.logic.commands.ChatLogging;
+import com.iggacorp.logic.commands.MemberJoinLeave;
+import com.iggacorp.logic.commands.SlashCommands;
+
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -34,7 +40,11 @@ public class Main {
 	public Main() throws Exception {
 		JDALogger.setFallbackLoggerEnabled(false);
 		bot = setupBot();
-		bot.addEventListener(new Interactions(bot));
+		bot.addEventListener(new SlashCommands(bot));
+		bot.addEventListener(new AdminCommands());
+		bot.addEventListener(new ChatLogging());
+		bot.addEventListener(new MemberJoinLeave());
+		bot.addEventListener(new AICommands());
 		bot.awaitReady();
 		IGGABOT_CHANNEL = getIggabotChannel();
 		guild = bot.getGuildById(IGGACORP);
@@ -64,7 +74,7 @@ public class Main {
 	}
 	//Resets the igg ai
 	public static void resetAI() {
-		Interactions.igg = Interactions.iggAI();
+		AICommands.igg = AICommands.iggAI();
 		bot.getChannelById(TextChannel.class, IGGABOT_CHANNEL).sendMessage("Reset AI!").queue();
 		System.out.println("Reset AI!");
 	}
