@@ -138,7 +138,7 @@ public class Panel extends JPanel {
 						}
 						//Page 2
 						case "Get Text Channels" -> Main.getTextChannels();
-						case "Activities" -> {}//Site.toggle(); toggles the activities I/O
+						case "Activities" -> toggle();//toggles the activities I/O
 						case "New Game" -> {}//makes a new gambling game
 						//Page 3
 						case "Reset Users" -> {
@@ -175,6 +175,10 @@ public class Panel extends JPanel {
 				}
 			}
 		}
+	}
+	//Sends a post that disabled the site
+	private void toggle() {
+		
 	}
 	private boolean confirmation() {
 		int t = 0;
